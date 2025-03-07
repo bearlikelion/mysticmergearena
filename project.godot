@@ -8,6 +8,10 @@
 
 config_version=5
 
+[GodotAutoBattler]
+
+config/ninetailsrabbit.match3_board/update_notification_enabled=true
+
 [application]
 
 config/name="GodotAutoBattler"
