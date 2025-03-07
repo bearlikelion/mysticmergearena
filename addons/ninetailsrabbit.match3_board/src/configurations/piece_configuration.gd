@@ -32,7 +32,7 @@ enum PieceType {
 var pieces_collision_layer: int = 8:
 	set(value):
 		pieces_collision_layer = clampi(value, 0, 32)
-
+		
 
 func is_normal() -> bool:
 	return type == PieceType.Normal
