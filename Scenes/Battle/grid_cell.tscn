@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbuktwycbqq5a"]
+
+[ext_resource type="Script" uid="uid://cslvjfwsc0suv" path="res://addons/ninetailsrabbit.match3_board/src/cells/grid_cell.gd" id="1_xexgu"]
+[ext_resource type="Texture2D" uid="uid://bdbjg75pn75i5" path="res://Assets/Sprites/32rogues/tiles.png" id="2_d6m3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn82r"]
+atlas = ExtResource("2_d6m3y")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twiii"]
+atlas = ExtResource("2_d6m3y")
+region = Rect2(0, 224, 32, 32)
+
+[node name="GridCell" type="Node2D"]
+script = ExtResource("1_xexgu")
+texture_scale = 1.5
+odd_cell_texture = SubResource("AtlasTexture_qn82r")
+even_cell_texture = SubResource("AtlasTexture_twiii")
+metadata/_custom_type_script = "uid://cslvjfwsc0suv"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

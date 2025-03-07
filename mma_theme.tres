@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dr6igk47jd2b2"]
+
+[ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="1_n23jn"]
+
+[resource]
+default_font = ExtResource("1_n23jn")

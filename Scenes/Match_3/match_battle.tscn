@@ -1,0 +1,756 @@
+[gd_scene load_steps=36 format=4 uid="uid://bliyb0fk4l4w5"]
+
+[ext_resource type="Script" uid="uid://dtrhwlflpuk5k" path="res://addons/ninetailsrabbit.match3_board/src/match3_board.gd" id="1_8eqft"]
+[ext_resource type="Script" uid="uid://bnft7go3mdmu0" path="res://Scenes/Match_3/match_battle.gd" id="1_u2reb"]
+[ext_resource type="Texture2D" uid="uid://vdb6v4kv32o0" path="res://Assets/Images/castle-background.png" id="2_8jvxr"]
+[ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="2_a2idh"]
+[ext_resource type="Script" uid="uid://dwm5va12d4t67" path="res://Scenes/Match_3/fct.gd" id="2_c4561"]
+[ext_resource type="AudioStream" uid="uid://dfwgyh7nbh8uj" path="res://Assets/Audio/Music/240376__edtijo__happy-8bit-pixel-adenture.ogg" id="2_sequc"]
+[ext_resource type="Resource" uid="uid://ca4lcvcmo0yut" path="res://Scenes/Match_3/match_battle_configuration.tres" id="2_u2reb"]
+[ext_resource type="Script" uid="uid://di3hqohlwfx7k" path="res://addons/ninetailsrabbit.match3_board/demo/demo_animator.gd" id="3_2u4ee"]
+[ext_resource type="AudioStream" uid="uid://bf08i44brgm82" path="res://Assets/Audio/SFX/clear.ogg" id="4_8qnpj"]
+[ext_resource type="Script" uid="uid://cynsl7ccyrwvu" path="res://Scenes/Match_3/end_game.gd" id="4_40ji7"]
+[ext_resource type="Script" uid="uid://crbsk7myf4of" path="res://addons/ninetailsrabbit.match3_board/src/tools/match3_preview.gd" id="4_kwvtu"]
+[ext_resource type="Script" uid="uid://qbg2bfx7finn" path="res://Scenes/Match_3/turn_counter.gd" id="4_odpnr"]
+[ext_resource type="Script" uid="uid://dnvkedpotyw2n" path="res://addons/ninetailsrabbit.match3_board/src/pieces/line_connector.gd" id="5_2u4ee"]
+[ext_resource type="Texture2D" uid="uid://bdbjg75pn75i5" path="res://Assets/Sprites/32rogues/tiles.png" id="6_u2reb"]
+[ext_resource type="Texture2D" uid="uid://b7g0n7r2a5b5m" path="res://Assets/Sprites/32rogues/rogues.png" id="7_kwvtu"]
+[ext_resource type="Texture2D" uid="uid://p61h3sb5qcqn" path="res://Assets/Sprites/Castle/tileset_complet.png" id="9_8qnpj"]
+[ext_resource type="Texture2D" uid="uid://tgswx30omfnf" path="res://Assets/Sprites/32rogues/monsters.png" id="12_5ojcl"]
+[ext_resource type="Script" uid="uid://virafpsb1iqo" path="res://Scenes/Match_3/match_3_highlighter.gd" id="12_ukc80"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ngjk"]
+texture = ExtResource("9_8qnpj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ukc80"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7ngjk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukc80"]
+atlas = ExtResource("6_u2reb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jvxr"]
+atlas = ExtResource("7_kwvtu")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sequc"]
+atlas = ExtResource("7_kwvtu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu6yf"]
+atlas = ExtResource("7_kwvtu")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ojcl"]
+atlas = ExtResource("7_kwvtu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u4ee"]
+atlas = ExtResource("6_u2reb")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4561"]
+atlas = ExtResource("12_5ojcl")
+region = Rect2(64, 256, 32, 32)
+
+[sub_resource type="Animation" id="Animation_c4561"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5ojcl"]
+resource_name = "hurt"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2idh"]
+_data = {
+&"RESET": SubResource("Animation_c4561"),
+&"hurt": SubResource("Animation_5ojcl")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ojcl"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4561"]
+bg_color = Color(0.752941, 0.223529, 0.168627, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ojcl"]
+font = ExtResource("2_a2idh")
+font_size = 96
+font_color = Color(0.752941, 0.223529, 0.168627, 1)
+outline_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2idh"]
+font = ExtResource("2_a2idh")
+font_size = 100
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_odpnr"]
+font = ExtResource("2_a2idh")
+font_size = 50
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sequc")
+volume_db = -5.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8jvxr")
+
+[node name="MatchBattle" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_u2reb")
+
+[node name="Chirp" type="AudioStreamPlayer" parent="MatchBattle"]
+stream = ExtResource("4_8qnpj")
+
+[node name="BackgroundTiles" type="TileMapLayer" parent="MatchBattle"]
+tile_map_data = PackedByteArray("AAAAABYAAAAAAAIAAAAAAAAAAAAAAAAAAAAnAAAAAAACAAAAAAAnABYAAAACAAIAAAAnABUAAAACAAEAAAAnABQAAAACAAEAAAAnABMAAAACAAEAAAAnABIAAAACAAEAAAAnABEAAAACAAEAAAAnABAAAAACAAEAAAAnAA8AAAACAAEAAAAnAA4AAAACAAEAAAAnAA0AAAACAAEAAAAnAAwAAAACAAEAAAAnAAsAAAACAAEAAAAnAAoAAAACAAEAAAAnAAkAAAACAAEAAAAnAAgAAAACAAEAAAAnAAcAAAACAAEAAAAnAAYAAAACAAEAAAAnAAUAAAACAAEAAAAnAAQAAAACAAEAAAAnAAMAAAACAAEAAAAnAAIAAAACAAEAAAAnAAEAAAACAAEAAAAmABYAAAABAAIAAAAlABYAAAABAAIAAAAkABYAAAABAAIAAAAjABYAAAABAAIAAAAiABYAAAABAAIAAAAhABYAAAABAAIAAAAgABYAAAABAAIAAAAfABYAAAABAAIAAAAeABYAAAABAAIAAAAdABYAAAABAAIAAAAcABYAAAABAAIAAAAbABYAAAABAAIAAAAaABYAAAABAAIAAAAZABYAAAABAAIAAAAYABYAAAABAAIAAAAXABYAAAABAAIAAAAWABYAAAABAAIAAAAVABYAAAABAAIAAAAUABYAAAABAAIAAAATABYAAAABAAIAAAASABYAAAABAAIAAAARABYAAAABAAIAAAAQABYAAAABAAIAAAAPABYAAAABAAIAAAAOABYAAAABAAIAAAANABYAAAABAAIAAAAMABYAAAABAAIAAAALABYAAAABAAIAAAAKABYAAAABAAIAAAAJABYAAAABAAIAAAAIABYAAAABAAIAAAAHABYAAAABAAIAAAAGABYAAAABAAIAAAAFABYAAAABAAIAAAAEABYAAAABAAIAAAADABYAAAABAAIAAAACABYAAAABAAIAAAABABYAAAABAAIAAAAAABUAAAAAAAEAAAAAABQAAAAAAAEAAAAAABMAAAAAAAEAAAAAABIAAAAAAAEAAAAAABEAAAAAAAEAAAAAABAAAAAAAAEAAAAAAA8AAAAAAAEAAAAAAA4AAAAAAAEAAAAAAA0AAAAAAAEAAAAAAAwAAAAAAAEAAAAAAAsAAAAAAAEAAAAAAAoAAAAAAAEAAAAAAAkAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAEAAAAAAAEAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAABAAAAAAASAAAAAAABAAAAAAATAAAAAAABAAAAAAAUAAAAAAABAAAAAAAVAAAAAAABAAAAAAAWAAAAAAABAAAAAAAXAAAAAAABAAAAAAAYAAAAAAABAAAAAAAZAAAAAAABAAAAAAAaAAAAAAABAAAAAAAbAAAAAAABAAAAAAAcAAAAAAABAAAAAAAdAAAAAAABAAAAAAAeAAAAAAABAAAAAAAfAAAAAAABAAAAAAAgAAAAAAABAAAAAAAhAAAAAAABAAAAAAAiAAAAAAABAAAAAAAjAAAAAAABAAAAAAAkAAAAAAABAAAAAAAlAAAAAAABAAAAAAAmAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAABAAoAAAABAAEAAAABAAsAAAABAAEAAAABAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAABAA8AAAABAAEAAAABABAAAAABAAEAAAABABEAAAABAAEAAAABABIAAAABAAEAAAABABMAAAABAAEAAAABABQAAAABAAEAAAABABUAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAACAAgAAAABAAEAAAACAAkAAAABAAEAAAACAAoAAAABAAEAAAACAAsAAAABAAEAAAACAAwAAAABAAEAAAACAA0AAAABAAEAAAACAA4AAAABAAEAAAACAA8AAAABAAEAAAACABAAAAABAAEAAAACABEAAAABAAEAAAACABIAAAABAAEAAAACABMAAAABAAEAAAACABQAAAABAAEAAAACABUAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAEAAAADAAUAAAABAAEAAAADAAYAAAABAAEAAAADAAcAAAABAAEAAAADAAgAAAABAAEAAAADAAkAAAABAAEAAAADAAoAAAABAAEAAAADAAsAAAABAAEAAAADAAwAAAABAAEAAAADAA0AAAABAAEAAAADAA4AAAABAAEAAAADAA8AAAABAAEAAAADABAAAAABAAEAAAADABEAAAABAAEAAAADABIAAAABAAEAAAADABMAAAABAAEAAAADABQAAAABAAEAAAADABUAAAABAAEAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAAEAAQAAAABAAEAAAAEAAUAAAABAAEAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAAEAAgAAAABAAEAAAAEAAkAAAABAAEAAAAEAAoAAAABAAEAAAAEAAsAAAABAAEAAAAEAAwAAAABAAEAAAAEAA0AAAABAAEAAAAEAA4AAAABAAEAAAAEAA8AAAABAAEAAAAEABAAAAABAAEAAAAEABEAAAABAAEAAAAEABIAAAABAAEAAAAEABMAAAABAAEAAAAEABQAAAABAAEAAAAEABUAAAABAAEAAAAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAAFAAMAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAFAAgAAAABAAEAAAAFAAkAAAABAAEAAAAFAAoAAAABAAEAAAAFAAsAAAABAAEAAAAFAAwAAAABAAEAAAAFAA0AAAABAAEAAAAFAA4AAAABAAEAAAAFAA8AAAABAAEAAAAFABAAAAABAAEAAAAFABEAAAABAAEAAAAFABIAAAABAAEAAAAFABMAAAABAAEAAAAFABQAAAABAAEAAAAFABUAAAABAAEAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAGAAoAAAABAAEAAAAGAAsAAAABAAEAAAAGAAwAAAABAAEAAAAGAA0AAAABAAEAAAAGAA4AAAABAAEAAAAGAA8AAAABAAEAAAAGABAAAAABAAEAAAAGABEAAAABAAEAAAAGABIAAAABAAEAAAAGABMAAAABAAEAAAAGABQAAAABAAEAAAAGABUAAAABAAEAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAHAAgAAAABAAEAAAAHAAkAAAABAAEAAAAHAAoAAAABAAEAAAAHAAsAAAABAAEAAAAHAAwAAAABAAEAAAAHAA0AAAABAAEAAAAHAA4AAAABAAEAAAAHAA8AAAABAAEAAAAHABAAAAABAAEAAAAHABEAAAABAAEAAAAHABIAAAABAAEAAAAHABMAAAABAAEAAAAHABQAAAABAAEAAAAHABUAAAABAAEAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAIAAgAAAABAAEAAAAIAAkAAAABAAEAAAAIAAoAAAADAAIAAAAIAAsAAAADAAMAAAAIAAwAAAADAAQAAAAIAA0AAAABAAEAAAAIAA4AAAABAAEAAAAIAA8AAAABAAEAAAAIABAAAAABAAEAAAAIABEAAAABAAEAAAAIABIAAAABAAEAAAAIABMAAAABAAEAAAAIABQAAAABAAEAAAAIABUAAAABAAEAAAAJAAEAAAABAAEAAAAJAAIAAAABAAEAAAAJAAMAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAEAAAAJAAkAAAABAAEAAAAJAAoAAAAEAAIAAAAJAAsAAAAEAAMAAAAJAAwAAAAEAAQAAAAJAA0AAAABAAEAAAAJAA4AAAABAAEAAAAJAA8AAAABAAEAAAAJABAAAAABAAEAAAAJABEAAAABAAEAAAAJABIAAAABAAEAAAAJABMAAAABAAEAAAAJABQAAAABAAEAAAAJABUAAAABAAEAAAAKAAEAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAAKAAgAAAABAAEAAAAKAAkAAAABAAEAAAAKAAoAAAAEAAIAAAAKAAsAAAAEAAMAAAAKAAwAAAAEAAQAAAAKAA0AAAABAAEAAAAKAA4AAAABAAEAAAAKAA8AAAABAAEAAAAKABAAAAABAAEAAAAKABEAAAABAAEAAAAKABIAAAABAAEAAAAKABMAAAABAAEAAAAKABQAAAABAAEAAAAKABUAAAABAAEAAAALAAEAAAABAAEAAAALAAIAAAABAAEAAAALAAMAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAALAAoAAAAEAAIAAAALAAsAAAAEAAMAAAALAAwAAAAEAAQAAAALAA0AAAABAAEAAAALAA4AAAABAAEAAAALAA8AAAABAAEAAAALABAAAAABAAEAAAALABEAAAABAAEAAAALABIAAAABAAEAAAALABMAAAABAAEAAAALABQAAAABAAEAAAALABUAAAABAAEAAAAMAAEAAAABAAEAAAAMAAIAAAABAAEAAAAMAAMAAAABAAEAAAAMAAQAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAAMAAkAAAABAAEAAAAMAAoAAAAEAAIAAAAMAAsAAAAEAAMAAAAMAAwAAAAEAAQAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAMAA8AAAABAAEAAAAMABAAAAABAAEAAAAMABEAAAABAAEAAAAMABIAAAABAAEAAAAMABMAAAABAAEAAAAMABQAAAABAAEAAAAMABUAAAABAAEAAAANAAEAAAABAAEAAAANAAIAAAABAAEAAAANAAMAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAANAAkAAAABAAEAAAANAAoAAAAEAAIAAAANAAsAAAAEAAMAAAANAAwAAAAEAAQAAAANAA0AAAABAAEAAAANAA4AAAABAAEAAAANAA8AAAABAAEAAAANABAAAAABAAEAAAANABEAAAABAAEAAAANABIAAAABAAEAAAANABMAAAABAAEAAAANABQAAAABAAEAAAANABUAAAABAAEAAAAOAAEAAAABAAEAAAAOAAIAAAABAAEAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAOAAgAAAABAAEAAAAOAAkAAAABAAEAAAAOAAoAAAAEAAIAAAAOAAsAAAAEAAMAAAAOAAwAAAAEAAQAAAAOAA0AAAABAAEAAAAOAA4AAAABAAEAAAAOAA8AAAABAAEAAAAOABAAAAABAAEAAAAOABEAAAABAAEAAAAOABIAAAABAAEAAAAOABMAAAABAAEAAAAOABQAAAABAAEAAAAOABUAAAABAAEAAAAPAAEAAAABAAEAAAAPAAIAAAABAAEAAAAPAAMAAAABAAEAAAAPAAQAAAABAAEAAAAPAAUAAAABAAEAAAAPAAYAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAEAAAAPAAkAAAABAAEAAAAPAAoAAAAEAAIAAAAPAAsAAAAEAAMAAAAPAAwAAAAEAAQAAAAPAA0AAAABAAEAAAAPAA4AAAABAAEAAAAPAA8AAAABAAEAAAAPABAAAAABAAEAAAAPABEAAAABAAEAAAAPABIAAAABAAEAAAAPABMAAAABAAEAAAAPABQAAAABAAEAAAAPABUAAAABAAEAAAAQAAEAAAABAAEAAAAQAAIAAAABAAEAAAAQAAMAAAABAAEAAAAQAAQAAAABAAEAAAAQAAUAAAABAAEAAAAQAAYAAAABAAEAAAAQAAcAAAABAAEAAAAQAAgAAAABAAEAAAAQAAkAAAABAAEAAAAQAAoAAAAEAAIAAAAQAAsAAAAEAAMAAAAQAAwAAAAEAAQAAAAQAA0AAAABAAEAAAAQAA4AAAABAAEAAAAQAA8AAAABAAEAAAAQABAAAAABAAEAAAAQABEAAAABAAEAAAAQABIAAAABAAEAAAAQABMAAAABAAEAAAAQABQAAAABAAEAAAAQABUAAAABAAEAAAARAAEAAAABAAEAAAARAAIAAAABAAEAAAARAAMAAAABAAEAAAARAAQAAAABAAEAAAARAAUAAAABAAEAAAARAAYAAAABAAEAAAARAAcAAAABAAEAAAARAAgAAAABAAEAAAARAAkAAAABAAEAAAARAAoAAAAEAAIAAAARAAsAAAAEAAMAAAARAAwAAAAEAAQAAAARAA0AAAABAAEAAAARAA4AAAABAAEAAAARAA8AAAABAAEAAAARABAAAAABAAEAAAARABEAAAABAAEAAAARABIAAAABAAEAAAARABMAAAABAAEAAAARABQAAAABAAEAAAARABUAAAABAAEAAAASAAEAAAABAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAABAAEAAAASAAUAAAABAAEAAAASAAYAAAABAAEAAAASAAcAAAABAAEAAAASAAgAAAABAAEAAAASAAkAAAABAAEAAAASAAoAAAAEAAIAAAASAAsAAAAEAAMAAAASAAwAAAAEAAQAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAASAA8AAAABAAEAAAASABAAAAABAAEAAAASABEAAAABAAEAAAASABIAAAABAAEAAAASABMAAAABAAEAAAASABQAAAABAAEAAAASABUAAAABAAEAAAATAAEAAAABAAEAAAATAAIAAAABAAEAAAATAAMAAAABAAEAAAATAAQAAAABAAEAAAATAAUAAAABAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAAEAAIAAAATAAsAAAAEAAMAAAATAAwAAAAEAAQAAAATAA0AAAABAAEAAAATAA4AAAABAAEAAAATAA8AAAABAAEAAAATABAAAAABAAEAAAATABEAAAABAAEAAAATABIAAAABAAEAAAATABMAAAABAAEAAAATABQAAAABAAEAAAATABUAAAABAAEAAAAUAAEAAAABAAEAAAAUAAIAAAABAAEAAAAUAAMAAAABAAEAAAAUAAQAAAABAAEAAAAUAAUAAAABAAEAAAAUAAYAAAABAAEAAAAUAAcAAAABAAEAAAAUAAgAAAABAAEAAAAUAAkAAAABAAEAAAAUAAoAAAAEAAIAAAAUAAsAAAAEAAMAAAAUAAwAAAAEAAQAAAAUAA0AAAABAAEAAAAUAA4AAAABAAEAAAAUAA8AAAABAAEAAAAUABAAAAABAAEAAAAUABEAAAABAAEAAAAUABIAAAABAAEAAAAUABMAAAABAAEAAAAUABQAAAABAAEAAAAUABUAAAABAAEAAAAVAAEAAAABAAEAAAAVAAIAAAABAAEAAAAVAAMAAAABAAEAAAAVAAQAAAABAAEAAAAVAAUAAAABAAEAAAAVAAYAAAABAAEAAAAVAAcAAAABAAEAAAAVAAgAAAABAAEAAAAVAAkAAAABAAEAAAAVAAoAAAAEAAIAAAAVAAsAAAAEAAMAAAAVAAwAAAAEAAQAAAAVAA0AAAABAAEAAAAVAA4AAAABAAEAAAAVAA8AAAABAAEAAAAVABAAAAABAAEAAAAVABEAAAABAAEAAAAVABIAAAABAAEAAAAVABMAAAABAAEAAAAVABQAAAABAAEAAAAVABUAAAABAAEAAAAWAAEAAAABAAEAAAAWAAIAAAABAAEAAAAWAAMAAAABAAEAAAAWAAQAAAABAAEAAAAWAAUAAAABAAEAAAAWAAYAAAABAAEAAAAWAAcAAAABAAEAAAAWAAgAAAABAAEAAAAWAAkAAAABAAEAAAAWAAoAAAAEAAIAAAAWAAsAAAAEAAMAAAAWAAwAAAAEAAQAAAAWAA0AAAABAAEAAAAWAA4AAAABAAEAAAAWAA8AAAABAAEAAAAWABAAAAABAAEAAAAWABEAAAABAAEAAAAWABIAAAABAAEAAAAWABMAAAABAAEAAAAWABQAAAABAAEAAAAWABUAAAABAAEAAAAXAAEAAAABAAEAAAAXAAIAAAABAAEAAAAXAAMAAAABAAEAAAAXAAQAAAABAAEAAAAXAAUAAAABAAEAAAAXAAYAAAABAAEAAAAXAAcAAAABAAEAAAAXAAgAAAABAAEAAAAXAAkAAAABAAEAAAAXAAoAAAAEAAIAAAAXAAsAAAAEAAMAAAAXAAwAAAAEAAQAAAAXAA0AAAABAAEAAAAXAA4AAAABAAEAAAAXAA8AAAABAAEAAAAXABAAAAABAAEAAAAXABEAAAABAAEAAAAXABIAAAABAAEAAAAXABMAAAABAAEAAAAXABQAAAABAAEAAAAXABUAAAABAAEAAAAYAAEAAAABAAEAAAAYAAIAAAABAAEAAAAYAAMAAAABAAEAAAAYAAQAAAABAAEAAAAYAAUAAAABAAEAAAAYAAYAAAABAAEAAAAYAAcAAAABAAEAAAAYAAgAAAABAAEAAAAYAAkAAAABAAEAAAAYAAoAAAAEAAIAAAAYAAsAAAAEAAMAAAAYAAwAAAAEAAQAAAAYAA0AAAABAAEAAAAYAA4AAAABAAEAAAAYAA8AAAABAAEAAAAYABAAAAABAAEAAAAYABEAAAABAAEAAAAYABIAAAABAAEAAAAYABMAAAABAAEAAAAYABQAAAABAAEAAAAYABUAAAABAAEAAAAZAAEAAAABAAEAAAAZAAIAAAABAAEAAAAZAAMAAAABAAEAAAAZAAQAAAABAAEAAAAZAAUAAAABAAEAAAAZAAYAAAABAAEAAAAZAAcAAAABAAEAAAAZAAgAAAABAAEAAAAZAAkAAAABAAEAAAAZAAoAAAAEAAIAAAAZAAsAAAAEAAMAAAAZAAwAAAAEAAQAAAAZAA0AAAABAAEAAAAZAA4AAAABAAEAAAAZAA8AAAABAAEAAAAZABAAAAABAAEAAAAZABEAAAABAAEAAAAZABIAAAABAAEAAAAZABMAAAABAAEAAAAZABQAAAABAAEAAAAZABUAAAABAAEAAAAaAAEAAAABAAEAAAAaAAIAAAABAAEAAAAaAAMAAAABAAEAAAAaAAQAAAABAAEAAAAaAAUAAAABAAEAAAAaAAYAAAABAAEAAAAaAAcAAAABAAEAAAAaAAgAAAABAAEAAAAaAAkAAAABAAEAAAAaAAoAAAAEAAIAAAAaAAsAAAAEAAMAAAAaAAwAAAAEAAQAAAAaAA0AAAABAAEAAAAaAA4AAAABAAEAAAAaAA8AAAABAAEAAAAaABAAAAABAAEAAAAaABEAAAABAAEAAAAaABIAAAABAAEAAAAaABMAAAABAAEAAAAaABQAAAABAAEAAAAaABUAAAABAAEAAAAbAAEAAAABAAEAAAAbAAIAAAABAAEAAAAbAAMAAAABAAEAAAAbAAQAAAABAAEAAAAbAAUAAAABAAEAAAAbAAYAAAABAAEAAAAbAAcAAAABAAEAAAAbAAgAAAABAAEAAAAbAAkAAAABAAEAAAAbAAoAAAAEAAIAAAAbAAsAAAAEAAMAAAAbAAwAAAAEAAQAAAAbAA0AAAABAAEAAAAbAA4AAAABAAEAAAAbAA8AAAABAAEAAAAbABAAAAABAAEAAAAbABEAAAABAAEAAAAbABIAAAABAAEAAAAbABMAAAABAAEAAAAbABQAAAABAAEAAAAbABUAAAABAAEAAAAcAAEAAAABAAEAAAAcAAIAAAABAAEAAAAcAAMAAAABAAEAAAAcAAQAAAABAAEAAAAcAAUAAAABAAEAAAAcAAYAAAABAAEAAAAcAAcAAAABAAEAAAAcAAgAAAABAAEAAAAcAAkAAAABAAEAAAAcAAoAAAAEAAIAAAAcAAsAAAAEAAMAAAAcAAwAAAAEAAQAAAAcAA0AAAABAAEAAAAcAA4AAAABAAEAAAAcAA8AAAABAAEAAAAcABAAAAABAAEAAAAcABEAAAABAAEAAAAcABIAAAABAAEAAAAcABMAAAABAAEAAAAcABQAAAABAAEAAAAcABUAAAABAAEAAAAdAAEAAAABAAEAAAAdAAIAAAABAAEAAAAdAAMAAAABAAEAAAAdAAQAAAABAAEAAAAdAAUAAAABAAEAAAAdAAYAAAABAAEAAAAdAAcAAAABAAEAAAAdAAgAAAABAAEAAAAdAAkAAAABAAEAAAAdAAoAAAAEAAIAAAAdAAsAAAAEAAMAAAAdAAwAAAAEAAQAAAAdAA0AAAABAAEAAAAdAA4AAAABAAEAAAAdAA8AAAABAAEAAAAdABAAAAABAAEAAAAdABEAAAABAAEAAAAdABIAAAABAAEAAAAdABMAAAABAAEAAAAdABQAAAABAAEAAAAdABUAAAABAAEAAAAeAAEAAAABAAEAAAAeAAIAAAABAAEAAAAeAAMAAAABAAEAAAAeAAQAAAABAAEAAAAeAAUAAAABAAEAAAAeAAYAAAABAAEAAAAeAAcAAAABAAEAAAAeAAgAAAABAAEAAAAeAAkAAAABAAEAAAAeAAoAAAAFAAIAAAAeAAsAAAAFAAMAAAAeAAwAAAAFAAQAAAAeAA0AAAABAAEAAAAeAA4AAAABAAEAAAAeAA8AAAABAAEAAAAeABAAAAABAAEAAAAeABEAAAABAAEAAAAeABIAAAABAAEAAAAeABMAAAABAAEAAAAeABQAAAABAAEAAAAeABUAAAABAAEAAAAfAAEAAAABAAEAAAAfAAIAAAABAAEAAAAfAAMAAAABAAEAAAAfAAQAAAABAAEAAAAfAAUAAAABAAEAAAAfAAYAAAABAAEAAAAfAAcAAAABAAEAAAAfAAgAAAABAAEAAAAfAAkAAAABAAEAAAAfAAoAAAABAAEAAAAfAAsAAAABAAEAAAAfAAwAAAABAAEAAAAfAA0AAAABAAEAAAAfAA4AAAABAAEAAAAfAA8AAAABAAEAAAAfABAAAAABAAEAAAAfABEAAAABAAEAAAAfABIAAAABAAEAAAAfABMAAAABAAEAAAAfABQAAAABAAEAAAAfABUAAAABAAEAAAAgAAEAAAABAAEAAAAgAAIAAAABAAEAAAAgAAMAAAABAAEAAAAgAAQAAAABAAEAAAAgAAUAAAABAAEAAAAgAAYAAAABAAEAAAAgAAcAAAABAAEAAAAgAAgAAAABAAEAAAAgAAkAAAABAAEAAAAgAAoAAAABAAEAAAAgAAsAAAABAAEAAAAgAAwAAAABAAEAAAAgAA0AAAABAAEAAAAgAA4AAAABAAEAAAAgAA8AAAABAAEAAAAgABAAAAABAAEAAAAgABEAAAABAAEAAAAgABIAAAABAAEAAAAgABMAAAABAAEAAAAgABQAAAABAAEAAAAgABUAAAABAAEAAAAhAAEAAAABAAEAAAAhAAIAAAABAAEAAAAhAAMAAAABAAEAAAAhAAQAAAABAAEAAAAhAAUAAAABAAEAAAAhAAYAAAABAAEAAAAhAAcAAAABAAEAAAAhAAgAAAABAAEAAAAhAAkAAAABAAEAAAAhAAoAAAABAAEAAAAhAAsAAAABAAEAAAAhAAwAAAABAAEAAAAhAA0AAAABAAEAAAAhAA4AAAABAAEAAAAhAA8AAAABAAEAAAAhABAAAAABAAEAAAAhABEAAAABAAEAAAAhABIAAAABAAEAAAAhABMAAAABAAEAAAAhABQAAAABAAEAAAAhABUAAAABAAEAAAAiAAEAAAABAAEAAAAiAAIAAAABAAEAAAAiAAMAAAABAAEAAAAiAAQAAAABAAEAAAAiAAUAAAABAAEAAAAiAAYAAAABAAEAAAAiAAcAAAABAAEAAAAiAAgAAAABAAEAAAAiAAkAAAABAAEAAAAiAAoAAAABAAEAAAAiAAsAAAABAAEAAAAiAAwAAAABAAEAAAAiAA0AAAABAAEAAAAiAA4AAAABAAEAAAAiAA8AAAABAAEAAAAiABAAAAABAAEAAAAiABEAAAABAAEAAAAiABIAAAABAAEAAAAiABMAAAABAAEAAAAiABQAAAABAAEAAAAiABUAAAABAAEAAAAjAAEAAAABAAEAAAAjAAIAAAABAAEAAAAjAAMAAAABAAEAAAAjAAQAAAABAAEAAAAjAAUAAAABAAEAAAAjAAYAAAABAAEAAAAjAAcAAAABAAEAAAAjAAgAAAABAAEAAAAjAAkAAAABAAEAAAAjAAoAAAABAAEAAAAjAAsAAAABAAEAAAAjAAwAAAABAAEAAAAjAA0AAAABAAEAAAAjAA4AAAABAAEAAAAjAA8AAAABAAEAAAAjABAAAAABAAEAAAAjABEAAAABAAEAAAAjABIAAAABAAEAAAAjABMAAAABAAEAAAAjABQAAAABAAEAAAAjABUAAAABAAEAAAAkAAEAAAABAAEAAAAkAAIAAAABAAEAAAAkAAMAAAABAAEAAAAkAAQAAAABAAEAAAAkAAUAAAABAAEAAAAkAAYAAAABAAEAAAAkAAcAAAABAAEAAAAkAAgAAAABAAEAAAAkAAkAAAABAAEAAAAkAAoAAAABAAEAAAAkAAsAAAABAAEAAAAkAAwAAAABAAEAAAAkAA0AAAABAAEAAAAkAA4AAAABAAEAAAAkAA8AAAABAAEAAAAkABAAAAABAAEAAAAkABEAAAABAAEAAAAkABIAAAABAAEAAAAkABMAAAABAAEAAAAkABQAAAABAAEAAAAkABUAAAABAAEAAAAlAAEAAAABAAEAAAAlAAIAAAABAAEAAAAlAAMAAAABAAEAAAAlAAQAAAABAAEAAAAlAAUAAAABAAEAAAAlAAYAAAABAAEAAAAlAAcAAAABAAEAAAAlAAgAAAABAAEAAAAlAAkAAAABAAEAAAAlAAoAAAABAAEAAAAlAAsAAAABAAEAAAAlAAwAAAABAAEAAAAlAA0AAAABAAEAAAAlAA4AAAABAAEAAAAlAA8AAAABAAEAAAAlABAAAAABAAEAAAAlABEAAAABAAEAAAAlABIAAAABAAEAAAAlABMAAAABAAEAAAAlABQAAAABAAEAAAAlABUAAAABAAEAAAAmAAEAAAABAAEAAAAmAAIAAAABAAEAAAAmAAMAAAABAAEAAAAmAAQAAAABAAEAAAAmAAUAAAABAAEAAAAmAAYAAAABAAEAAAAmAAcAAAABAAEAAAAmAAgAAAABAAEAAAAmAAkAAAABAAEAAAAmAAoAAAABAAEAAAAmAAsAAAABAAEAAAAmAAwAAAABAAEAAAAmAA0AAAABAAEAAAAmAA4AAAABAAEAAAAmAA8AAAABAAEAAAAmABAAAAABAAEAAAAmABEAAAABAAEAAAAmABIAAAABAAEAAAAmABMAAAABAAEAAAAmABQAAAABAAEAAAAmABUAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_ukc80")
+
+[node name="Match3Board" type="Node2D" parent="MatchBattle" node_paths=PackedStringArray("animator", "highlighter", "line_connector")]
+unique_name_in_owner = true
+position = Vector2(300, 459)
+script = ExtResource("1_8eqft")
+configuration = ExtResource("2_u2reb")
+animator = NodePath("Match3Animator")
+highlighter = NodePath("Match3Highlighter")
+line_connector = NodePath("Match3LineConnector")
+
+[node name="Match3Animator" type="Node" parent="MatchBattle/Match3Board" node_paths=PackedStringArray("board")]
+script = ExtResource("3_2u4ee")
+board = NodePath("..")
+
+[node name="Match3Highlighter" type="Node" parent="MatchBattle/Match3Board"]
+script = ExtResource("12_ukc80")
+highlight_texture = SubResource("AtlasTexture_ukc80")
+metadata/_custom_type_script = "uid://c32eg6vwdcifp"
+
+[node name="Match3LineConnector" type="Line2D" parent="MatchBattle/Match3Board" node_paths=PackedStringArray("board")]
+width = 1.5
+default_color = Color(1, 1, 0.443137, 1)
+script = ExtResource("5_2u4ee")
+board = NodePath("..")
+
+[node name="Match3Preview" type="Node2D" parent="MatchBattle/Match3Board" node_paths=PackedStringArray("board")]
+script = ExtResource("4_kwvtu")
+board = NodePath("..")
+preview_pieces = Array[Texture2D]([SubResource("AtlasTexture_8jvxr"), SubResource("AtlasTexture_sequc"), SubResource("AtlasTexture_qu6yf"), SubResource("AtlasTexture_5ojcl")])
+preview_cell_texture = SubResource("AtlasTexture_2u4ee")
+piece_texture_scale = 0.9
+cell_texture_scale = 1.5
+display_cell_position = false
+position_font_size = 8
+
+[node name="Cell(0,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(0,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(0,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(0, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(0,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(0, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(0,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(0, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(0,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(0, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(0,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(0, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(0,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(0, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(1,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(72, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(1,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(48, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(1,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(72, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(1,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(48, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(1,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(72, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(1,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(48, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(1,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(72, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(1,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(48, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(2,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(144, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(2,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(96, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(2,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(144, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(2,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(96, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(2,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(144, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(2,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(96, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(2,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(144, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(2,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(96, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(3,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(216, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(3,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(144, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(3,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(216, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(3,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(144, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(3,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(216, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(3,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(144, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(3,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(216, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(3,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(144, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(4,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(288, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(4,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(192, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(4,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(288, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(4,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(192, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(4,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(288, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(4,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(192, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(4,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(288, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(4,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(192, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(5,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(360, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(5,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(240, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(5,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(360, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(5,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(240, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(5,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(360, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(5,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(240, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(5,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(360, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(5,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(240, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(6,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(432, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(6,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(288, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(6,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(432, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(6,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(288, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(6,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(432, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(6,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(288, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(6,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(432, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(6,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(288, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(7,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(504, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(7,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(336, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(7,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(504, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(7,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(336, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(7,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(504, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(7,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(336, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(7,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(504, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(7,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(336, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(8,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(576, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(8,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(384, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(8,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(576, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(8,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(384, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_sequc")
+
+[node name="Cell(8,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(576, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(8,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(384, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_8jvxr")
+
+[node name="Cell(8,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(576, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(8,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(384, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(9,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(648, 0)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(9,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(432, 0)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(9,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(648, 72)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(9,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(432, 48)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_5ojcl")
+
+[node name="Cell(9,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(648, 144)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(9,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(432, 96)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Cell(9,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+position = Vector2(648, 216)
+scale = Vector2(2.25, 2.25)
+texture = SubResource("AtlasTexture_2u4ee")
+
+[node name="Piece(9,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
+z_index = 1
+position = Vector2(432, 144)
+scale = Vector2(1.35, 1.35)
+texture = SubResource("AtlasTexture_qu6yf")
+
+[node name="Dragon" type="Sprite2D" parent="MatchBattle"]
+position = Vector2(601, 162)
+scale = Vector2(10, 10)
+texture = SubResource("AtlasTexture_c4561")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MatchBattle/Dragon"]
+libraries = {
+&"": SubResource("AnimationLibrary_a2idh")
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="MatchBattle/Dragon"]
+unique_name_in_owner = true
+top_level = true
+custom_minimum_size = Vector2(250, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_right = 109.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_a2idh")
+theme_override_styles/background = SubResource("StyleBoxFlat_5ojcl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c4561")
+value = 100.0
+
+[node name="FCT" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -11.5
+offset_right = 24.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 dmg"
+label_settings = SubResource("LabelSettings_5ojcl")
+horizontal_alignment = 1
+script = ExtResource("2_c4561")
+
+[node name="EndGame" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_40ji7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -117.0
+offset_right = 210.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Victory" type="Label" parent="EndGame/VBoxContainer"]
+layout_mode = 2
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_a2idh")
+horizontal_alignment = 1
+
+[node name="TurnCounter" type="Label" parent="EndGame/VBoxContainer"]
+layout_mode = 2
+text = "Turns Taken: 0"
+label_settings = SubResource("LabelSettings_odpnr")
+horizontal_alignment = 1
+script = ExtResource("4_odpnr")
+
+[node name="BackToMenu" type="Button" parent="EndGame/VBoxContainer"]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="pressed" from="EndGame/VBoxContainer/BackToMenu" to="EndGame" method="_on_back_to_menu_pressed"]

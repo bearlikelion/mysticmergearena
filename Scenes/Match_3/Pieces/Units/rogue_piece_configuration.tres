@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Match3PieceConfiguration" load_steps=5 format=3 uid="uid://ckwh0a4wjk2ir"]
+
+[ext_resource type="PackedScene" uid="uid://l7a5yfdd338r" path="res://Scenes/Match_3/Pieces/Units/rogue_piece.tscn" id="1_a7c65"]
+[ext_resource type="Script" uid="uid://1ormlpos3vje" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="2_a2jis"]
+[ext_resource type="Script" uid="uid://bgt4m5xwrelcy" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_weight.gd" id="3_wey1h"]
+
+[sub_resource type="Resource" id="Resource_5by26"]
+script = ExtResource("3_wey1h")
+value = 1.0
+
+[resource]
+script = ExtResource("2_a2jis")
+scene = ExtResource("1_a7c65")
+id = &"rogue"
+name = "Rogue"
+description = ""
+weight = SubResource("Resource_5by26")
+type = 0
+shape = &"rogue"
+color = Color(0, 0, 0, 1)
+priority = 0
+can_be_swapped = true
+can_be_moved = true
+can_be_shuffled = true
+can_be_triggered = false
+can_be_replaced = true
+can_be_consumed = true

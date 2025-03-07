@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://l7a5yfdd338r"]
+
+[ext_resource type="Script" uid="uid://b2edwb8sl1p58" path="res://addons/ninetailsrabbit.match3_board/src/pieces/piece.gd" id="1_5ftcx"]
+[ext_resource type="Texture2D" uid="uid://b7g0n7r2a5b5m" path="res://Assets/Sprites/32rogues/rogues.png" id="2_2063e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b2vl"]
+atlas = ExtResource("2_2063e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ftcx"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="RoguePiece" type="Node2D"]
+script = ExtResource("1_5ftcx")
+texture_scale = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_8b2vl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5ftcx")

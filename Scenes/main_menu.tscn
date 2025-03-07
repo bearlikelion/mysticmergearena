@@ -1,0 +1,173 @@
+[gd_scene load_steps=6 format=3 uid="uid://8nkleb6aublu"]
+
+[ext_resource type="Texture2D" uid="uid://vdb6v4kv32o0" path="res://Assets/Images/castle-background.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bo52pu56qfbxb" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="2_48xlc"]
+[ext_resource type="Theme" uid="uid://dr6igk47jd2b2" path="res://mma_theme.tres" id="3_1ehe0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
+font = ExtResource("2_48xlc")
+font_size = 96
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_28flt")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Mystic Merge Arena"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 150
+
+[node name="LobbyVersus" type="HBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Player1" type="Panel" parent="MarginContainer/LobbyVersus"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player1Name" type="Label" parent="MarginContainer/LobbyVersus/Player1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 32
+text = "Player Name"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/LobbyVersus"]
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 64
+text = "VS"
+
+[node name="Player2" type="Panel" parent="MarginContainer/LobbyVersus"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player2Name" type="Label" parent="MarginContainer/LobbyVersus/Player2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 32
+text = "Player Name"
+horizontal_alignment = 1
+
+[node name="LobbyScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LobbyVbox" type="VBoxContainer" parent="MarginContainer/LobbyScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/LobbyScrollContainer/LobbyVbox"]
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 32
+text = "Open Lobbies"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/LobbyScrollContainer/LobbyVbox"]
+layout_mode = 2
+
+[node name="ButtonsVbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -168.0
+offset_right = 156.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="DragonButton" type="Button" parent="ButtonsVbox"]
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 32
+text = "Slay the Dragon"
+
+[node name="RefreshGames" type="Button" parent="ButtonsVbox"]
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Refresh Lobbies"
+
+[node name="CreateGame" type="Button" parent="ButtonsVbox"]
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 64
+disabled = true
+text = "Create Game"
+
+[node name="ReadyButton" type="Button" parent="ButtonsVbox"]
+visible = false
+layout_mode = 2
+theme = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 64
+disabled = true
+toggle_mode = true
+text = "Ready"
+
+[connection signal="pressed" from="ButtonsVbox/DragonButton" to="." method="_on_dragon_button_pressed"]
+[connection signal="pressed" from="ButtonsVbox/RefreshGames" to="." method="_on_refresh_games_pressed"]
+[connection signal="pressed" from="ButtonsVbox/CreateGame" to="." method="_on_create_game_pressed"]
+[connection signal="toggled" from="ButtonsVbox/ReadyButton" to="." method="_on_ready_button_toggled"]

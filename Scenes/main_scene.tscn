@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ity3c2ba7s5"]
+
+[ext_resource type="Script" uid="uid://bhcoa7c0anrk7" path="res://Scenes/main_scene.gd" id="1_6l7je"]
+[ext_resource type="PackedScene" uid="uid://8nkleb6aublu" path="res://Scenes/main_menu.tscn" id="1_52fb6"]
+
+[node name="MainScene" type="Node"]
+script = ExtResource("1_6l7je")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="MainMenu" parent="Level" instance=ExtResource("1_52fb6")]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Level")

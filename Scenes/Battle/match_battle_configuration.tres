@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Match3BoardConfiguration" load_steps=9 format=3 uid="uid://duwx1a4klnd3i"]
+
+[ext_resource type="Script" uid="uid://1ormlpos3vje" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="1_q0nbc"]
+[ext_resource type="Resource" uid="uid://deu0c6c6x3oly" path="res://Scenes/Match_3/Pieces/Units/elf_piece_configuration.tres" id="2_x2ece"]
+[ext_resource type="Resource" uid="uid://8g74wqpc6ewy" path="res://Scenes/Match_3/Pieces/Units/knight_piece_configuration.tres" id="3_l1niq"]
+[ext_resource type="Resource" uid="uid://ckwh0a4wjk2ir" path="res://Scenes/Match_3/Pieces/Units/rogue_piece_configuration.tres" id="4_0yjg2"]
+[ext_resource type="Resource" uid="uid://xekp4tb0vrr5" path="res://Scenes/Match_3/Pieces/Units/wizard_piece_configuration.tres" id="5_e7b3b"]
+[ext_resource type="PackedScene" uid="uid://btleiurbbu1d0" path="res://Scenes/Match_3/grid_cell.tscn" id="6_wvslf"]
+[ext_resource type="Script" uid="uid://bsiqlk2y4cu2r" path="res://addons/ninetailsrabbit.match3_board/src/configurations/match3_board_configuration.gd" id="7_d6lgg"]
+[ext_resource type="Script" uid="uid://d2yo8v65pyjpm" path="res://addons/ninetailsrabbit.match3_board/src/configurations/sequence_consume_rule.gd" id="8_04gjp"]
+
+[resource]
+script = ExtResource("7_d6lgg")
+available_pieces = Array[ExtResource("1_q0nbc")]([ExtResource("2_x2ece"), ExtResource("3_l1niq"), ExtResource("4_0yjg2"), ExtResource("5_e7b3b")])
+available_special_pieces = Array[ExtResource("1_q0nbc")]([])
+pieces_collision_layer = 8
+grid_width = 10
+grid_height = 4
+grid_cell_scene = ExtResource("6_wvslf")
+empty_cells = Array[Vector2i]([])
+cell_size = Vector2i(48, 48)
+cell_offset = Vector2i(0, 0)
+swap_mode = 0
+selection_mode = 1
+fill_mode = 0
+auto_start = true
+min_match = 3
+max_match = 5
+available_moves_on_start = 25
+allow_matches_on_start = false
+sequence_rules = Array[ExtResource("8_04gjp")]([])
+horizontal_shape = true
+vertical_shape = true
+tshape = true
+lshape = true
+draw_cells_and_pieces_animation = 0
+sequence_animation = 0
+fall_animation = 1
+fill_animation = 1
+delay_after_shuffle = 0.5

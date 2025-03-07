@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GodotAutoBattler"
+run/main_scene="uid://3ity3c2ba7s5"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+Global="*res://Scripts/global.gd"
+Events="*res://Scripts/events.gd"
+NetCode="*res://Scripts/net_code.gd"
+AudioManager="*res://Scripts/audio_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ninetailsrabbit.match3_board/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=0
+textures/light_projectors/filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
