@@ -12,15 +12,15 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		call_deferred("spawn", 1) # Spawn Host Board
 		for peer_id: int in multiplayer.get_peers():
-			# spawn(peer_id) # Spawn Client Board
-			var client_board: Match3Board = spawn(peer_id)
-			client_board.set_multiplayer_authority(peer_id)
+			spawn(peer_id) # Spawn Client Board
+			# var client_board: Match3Board = spawn(peer_id)
+			# client_board.set_multiplayer_authority(peer_id, true)
 
 
 func spawn_board(peer_id: int) -> Match3Board:
 	print("[%s] Spawn Board for %s" % [multiplayer.get_unique_id(), peer_id])
 	var board: Match3Board = MATCH_3_BOARD.instantiate()
-	# board.set_multiplayer_authority(peer_id)
+	board.set_multiplayer_authority(peer_id)
 	board.name = str(peer_id)
 	# board.lock()
 

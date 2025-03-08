@@ -220,6 +220,7 @@ func draw_pieces() -> Match3Board:
 
 
 func draw_piece_on_cell(cell: Match3GridCell, piece: Match3Piece, replace: bool = false) -> void:
+	print("DRAW PIECE ON CELL")
 	if cell.can_contain_piece and (cell.is_empty() or replace):
 		piece.cell = cell
 		piece.position = cell.position

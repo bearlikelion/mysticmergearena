@@ -76,7 +76,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(0,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(0, 144)
@@ -87,7 +87,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(0,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(0, 216)
@@ -98,7 +98,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(72, 0)
@@ -109,7 +109,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 0)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,1)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(72, 72)
@@ -120,7 +120,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(1,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(72, 144)
@@ -131,7 +131,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(72, 216)
@@ -142,7 +142,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(2,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(144, 0)
@@ -153,7 +153,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 0)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(2,1)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(144, 72)
@@ -164,7 +164,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(2,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(144, 144)
@@ -175,7 +175,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(2,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(144, 216)
@@ -186,7 +186,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(3,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(216, 0)
@@ -208,7 +208,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(3,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(216, 144)
@@ -219,7 +219,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(3,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(216, 216)
@@ -230,7 +230,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(4,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(288, 0)
@@ -274,7 +274,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(192, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(5,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(360, 0)
@@ -296,7 +296,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(240, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(5,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(360, 144)
@@ -307,7 +307,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(240, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(5,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(360, 216)
@@ -329,7 +329,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(288, 0)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(6,1)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(432, 72)
@@ -373,7 +373,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 0)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(7,1)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(504, 72)
@@ -384,7 +384,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(7,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(504, 144)
@@ -395,7 +395,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(7,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(504, 216)
@@ -406,7 +406,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(8,0)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(576, 0)
@@ -428,7 +428,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(384, 48)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(8,2)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(576, 144)
@@ -439,7 +439,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(384, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(8,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(576, 216)
@@ -461,7 +461,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 0)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(9,1)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(648, 72)
@@ -483,7 +483,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 96)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(9,3)" type="Sprite2D" parent="Match3Preview"]
 position = Vector2(648, 216)
@@ -494,7 +494,13 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 144)
 scale = Vector2(1.5, 1.5)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Chirp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_dbja4")
+
+[node name="CellSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="PieceSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")

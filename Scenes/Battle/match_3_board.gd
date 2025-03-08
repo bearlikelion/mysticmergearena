@@ -9,14 +9,21 @@ var total_damage: float = 0.0
 var turns: int = 0
 var chirp_pitch_scale: float = 1.0
 
+@onready var cell_spawner: MultiplayerSpawner = $CellSpawner
+@onready var piece_spawner: MultiplayerSpawner = $PieceSpawner
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	cell_spawner.spawn_function = spawn_cell
+	piece_spawner.spawn_function = spawn_piece
 	add_to_group("board_" + str(multiplayer.get_unique_id()))
 	add_pieces_to_generator(configuration.available_pieces)
 	if is_multiplayer_authority():
 		super()
 		consumed_sequence.connect(_on_consumed_sequence)
+		await draw_cells()
+		await draw_pieces()
 
 
 func _on_consumed_sequence(sequence: Match3Sequence) -> void:
@@ -33,15 +40,21 @@ func _on_consumed_sequence(sequence: Match3Sequence) -> void:
 func on_drawed_pieces(_pieces: Array[Match3Piece]) -> void:
 	if configuration.allow_matches_on_start:
 		travel_to(BoardState.Consume)
-	else:
-		remove_matches_from_board()
+	#else:
+		#remove_matches_from_board()
 
 
-func draw_cell(column: int, row: int) -> Match3GridCell:
-	if grid_cells_flattened.any(func(cell: Match3GridCell): cell.in_same_grid_position_as(Vector2i(column, row))):
+func spawn_cell(cell_array: Array) -> Match3GridCell:
+	var column = cell_array[0]
+	var row = cell_array[1]
+
+	if grid_cells_flattened.any(func(existing_cell: Match3GridCell): existing_cell.in_same_grid_position_as(Vector2i(column, row))):
 		return
 
 	var cell: Match3GridCell =  configuration.grid_cell_scene.instantiate()
+	cell.set_multiplayer_authority(get_multiplayer_authority())
+	var cell_group_string: String = "cell_%s_%s_%s" % [get_multiplayer_authority(), column, row]
+	cell.add_to_group(cell_group_string)
 	cell.size = configuration.cell_size
 	cell.column = column
 	cell.row = row
@@ -51,35 +64,75 @@ func draw_cell(column: int, row: int) -> Match3GridCell:
 
 	cell.position.x += configuration.cell_offset.x * column
 	cell.position.y += configuration.cell_offset.y * row
-	# cell.set_multiplayer_authority(get_multiplayer_authority())
 
 	if cell.board_position() in configuration.empty_cells:
 		clear_cell(cell, true)
 
-	add_child(cell, true)
-
+	# add_child(cell, true)
 	drawed_cell.emit(cell)
-
 	return cell
 
 
-func draw_piece_on_cell(cell: Match3GridCell, piece: Match3Piece, replace: bool = false) -> void:
-	if cell.can_contain_piece and (cell.is_empty() or replace):
-		piece.cell = cell
-		piece.position = cell.position
-		# piece.set_multiplayer_authority(get_multiplayer_authority())
+func draw_cells() -> Match3Board:
+	if grid_cells.is_empty():
+		for column in configuration.grid_width:
+			grid_cells.append([])
 
-		if replace and cell.has_piece():
-			cell.remove_piece()
+			for row in configuration.grid_height:
+				grid_cells[column].append(cell_spawner.spawn([column, row]))
 
-		cell.piece = piece
+		grid_cells_flattened.append_array(Match3BoardPluginUtilities.flatten(grid_cells))
+		_update_grid_cells_neighbours(grid_cells_flattened)
 
-		if not piece.is_inside_tree():
-			add_child(piece, true)
-			drawed_piece.emit(piece)
+
+		if animator:
+			if configuration.draw_cells_and_pieces_animation_is_serial():
+				await animator.run(Match3Animator.DrawCellsAnimation, [grid_cells_flattened])
+			elif configuration.draw_cells_and_pieces_animation_is_parallel():
+				animator.run(Match3Animator.DrawCellsAnimation, [grid_cells_flattened])
+
+		drawed_cells.emit(grid_cells_flattened)
+
+	return self
+
+
+func spawn_piece(cell_group: String) -> Match3Piece:
+	# print("Find Cell: %s" % cell_group)
+	var cell = get_tree().get_first_node_in_group(cell_group)
+	var piece: Match3Piece = Match3Piece.from_configuration(piece_generator.roll())
+	piece.set_multiplayer_authority(get_multiplayer_authority())
+	piece.position = cell.position
+	piece.cell = cell
+	cell.piece = piece
+	drawed_piece.emit(piece)
+	return piece
+
+
+func draw_pieces() -> Match3Board:
+	assert(configuration.available_pieces.size() > 0, "Match3Board: No available pieces are set for this board, the pieces cannot be drawed")
+
+	for cell: Match3GridCell in grid_cells_flattened:
+		# draw_random_piece_on_cell(cell)
+		var cell_group_string: String = "cell_%s_%s_%s" % [get_multiplayer_authority(), cell.column, cell.row]
+		piece_spawner.spawn(cell_group_string)
+
+	lock_all_pieces()
+
+	if animator:
+		if configuration.draw_cells_and_pieces_animation_is_serial():
+			await animator.run(Match3Animator.DrawPiecesAnimation, [pieces()])
+		elif configuration.draw_cells_and_pieces_animation_is_parallel():
+			animator.run(Match3Animator.DrawPiecesAnimation, [pieces()])
+
+	unlock_all_pieces()
+	drawed_pieces.emit(pieces())
+	return self
 
 
 func on_board_state_changed(from: BoardState, to: BoardState) -> void:
+	if not is_multiplayer_authority():
+		return
+
 	print("[%s] FROM: %s TO: %s" % [multiplayer.get_unique_id(), from, to])
 	match to:
 		BoardState.WaitForInput:

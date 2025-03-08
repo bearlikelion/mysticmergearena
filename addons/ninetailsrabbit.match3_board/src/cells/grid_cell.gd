@@ -40,7 +40,6 @@ var original_texture: Texture2D
 
 func _enter_tree() -> void:
 	add_to_group(GroupName)
-
 	name = "GridCellUI_[%d]_[%d]" % [column, row]
 
 

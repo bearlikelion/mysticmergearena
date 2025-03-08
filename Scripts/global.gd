@@ -26,6 +26,8 @@ func _init() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_window().title = "AutoBattler Session: %s" % _instance_num
+	multiplayer.allow_object_decoding = true
+	print("Object Decoding: %s" % multiplayer.is_object_decoding_allowed())
 
 	print("Device ID: %s" % device_id)
 	client = Nakama.create_client("m4rkS0cketK3y",

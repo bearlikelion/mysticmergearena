@@ -27,6 +27,10 @@ Events="*res://Scripts/events.gd"
 NetCode="*res://Scripts/net_code.gd"
 AudioManager="*res://Scripts/audio_manager.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1280
