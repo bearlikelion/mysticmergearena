@@ -101,7 +101,7 @@ enum AnimationFlow {
 @export var allow_matches_on_start: bool = false
 
 @export_group("Sequences")
-## Set the rules to spawn new special pieces in the board 
+## Set the rules to spawn new special pieces in the board
 @export var sequence_rules: Array[SequenceConsumeRule] = []
 
 ## When enabled, horizontal matchs between pieces are allowed
@@ -131,59 +131,59 @@ func piece_configuration_by_id(id: StringName) -> Match3PieceConfiguration:
 	var configurations: Array[Match3PieceConfiguration] = available_pieces.filter(
 		func(piece: Match3PieceConfiguration):
 			return piece.id == id)
-	
+
 	if configurations.is_empty():
 		return null
-		
+
 	return configurations.front()
-	
-	
+
+
 func special_piece_configuration_by_id(id: StringName) -> Match3PieceConfiguration:
 	var configurations: Array[Match3PieceConfiguration] = available_special_pieces.filter(
 		func(piece: Match3PieceConfiguration):
 			return piece.id == id)
-	
+
 	if configurations.is_empty():
 		return null
-		
+
 	return configurations.front()
 
 #region Information
 func is_selection_click_mode() -> bool:
 	return selection_mode == BoardSelectionMode.Click
-	
+
 
 func is_selection_drag_mode() -> bool:
 	return selection_mode == BoardSelectionMode.Drag
-	
-	
+
+
 func is_selection_slide_mode() -> bool:
 	return selection_mode == BoardSelectionMode.Slide
-	
+
 
 func fill_mode_is_fall_down() -> bool:
 	return fill_mode == BoardFillModes.FallDown
-	
+
 
 func fill_mode_is_side() -> bool:
 	return fill_mode == BoardFillModes.Side
-	
-	
+
+
 func fill_mode_is_in_place() -> bool:
 	return fill_mode == BoardFillModes.InPlace
-	
+
 
 func swap_mode_is_adjacent() -> bool:
 	return swap_mode == BoardMovements.Adjacent
-	
-	
+
+
 func swap_mode_is_adjacent_with_diagonals() -> bool:
 	return swap_mode == BoardMovements.AdjacentWithDiagonals
-	
-	
+
+
 func swap_mode_is_adjacent_only_diagonals() -> bool:
 	return swap_mode == BoardMovements.AdjacentDiagonals
-	
+
 
 func swap_mode_is_free() -> bool:
 	return swap_mode == BoardMovements.Free
@@ -195,31 +195,31 @@ func swap_mode_is_row() -> bool:
 
 func swap_mode_is_column() -> bool:
 	return swap_mode == BoardMovements.Column
-	
-	
+
+
 func swap_mode_is_cross() -> bool:
 	return swap_mode == BoardMovements.Cross
-	
-	
+
+
 func swap_mode_is_cross_diagonal() -> bool:
 	return swap_mode == BoardMovements.CrossDiagonal
-	
-	
+
+
 func swap_mode_is_connect_line() -> bool:
 	return swap_mode == BoardMovements.ConnectLine
 
 
 func draw_cells_and_pieces_animation_is_serial() -> bool:
 	return sequence_animation == AnimationFlow.Serial
-	
-	
+
+
 func draw_cells_and_pieces_animation_is_parallel() -> bool:
 	return sequence_animation == AnimationFlow.Parallel
-	
-	
+
+
 func sequence_animation_is_serial() -> bool:
 	return sequence_animation == AnimationFlow.Serial
-	
+
 
 func sequence_animation_is_parallel() -> bool:
 	return sequence_animation == AnimationFlow.Parallel
@@ -227,15 +227,15 @@ func sequence_animation_is_parallel() -> bool:
 
 func fall_animation_is_serial() -> bool:
 	return fall_animation == AnimationFlow.Serial
-	
+
 
 func fall_animation_is_parallel() -> bool:
 	return fall_animation == AnimationFlow.Parallel
-	
+
 
 func fill_animation_is_serial() -> bool:
 	return fill_animation == AnimationFlow.Serial
-	
+
 
 func fill_animation_is_parallel() -> bool:
 	return fill_animation == AnimationFlow.Parallel

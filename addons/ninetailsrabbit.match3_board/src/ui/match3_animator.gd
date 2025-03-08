@@ -43,19 +43,19 @@ var animations: Dictionary = {
 func _ready() -> void:
 	if board == null:
 		board = get_tree().get_first_node_in_group(Match3Board.GroupName)
-	
+
 	assert(board != null, "Match3Animator: This animator needs a Match3Board assigned")
-	
+
 	animation_started.connect(on_animation_started)
 	animation_finished.connect(on_animation_finished)
 
 
 func run(anim_name: StringName, parameters: Array[Variant]) -> void:
 	animation_started.emit(anim_name)
-	
+
 	if animations.has(anim_name):
 		await animations[anim_name].callv(parameters)
-		
+
 	animation_finished.emit(anim_name)
 
 
@@ -84,8 +84,8 @@ func swap_rejected_pieces(
 	to_piece_position: Vector2
 ):
 	pass
-	
-	
+
+
 func consume_sequence(sequence: Match3Sequence) -> void:
 	pass
 
@@ -96,20 +96,20 @@ func consume_sequences(sequences: Array[Match3SequenceConsumer.Match3SequenceCon
 
 func fall_piece(movement: Match3FallMover.FallMovement) -> void:
 	pass
-	
+
 
 func fall_pieces(movements: Array[Match3FallMover.FallMovement]) -> void:
 	pass
-	
-	
+
+
 func spawn_piece(cell: Match3GridCell) -> void:
 	pass
-	
+
 
 func spawn_pieces(cells: Array[Match3GridCell]) -> void:
 	pass
-	
-	
+
+
 func trigger_special_piece(piece: Match3Piece) -> void:
 	pass
 

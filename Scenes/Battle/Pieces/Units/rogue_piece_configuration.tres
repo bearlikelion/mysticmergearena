@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Match3PieceConfiguration" load_steps=5 format=3 uid="uid://dhqpj44r6glef"]
 
-[ext_resource type="PackedScene" uid="uid://l7a5yfdd338r" path="res://Scenes/Match_3/Pieces/Units/rogue_piece.tscn" id="1_kcgi3"]
-[ext_resource type="Script" uid="uid://1ormlpos3vje" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="2_dwjqe"]
-[ext_resource type="Script" uid="uid://bgt4m5xwrelcy" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_weight.gd" id="3_2qipa"]
+[ext_resource type="PackedScene" uid="uid://c73iohbh6gevc" path="res://Scenes/Battle/Pieces/Units/rogue_piece.tscn" id="1_kcgi3"]
+[ext_resource type="Script" uid="uid://d4hhq3xk71dh1" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="2_dwjqe"]
+[ext_resource type="Script" uid="uid://y1ng21yravws" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_weight.gd" id="3_2qipa"]
 
 [sub_resource type="Resource" id="Resource_5by26"]
 script = ExtResource("3_2qipa")

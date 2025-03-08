@@ -2,21 +2,17 @@ extends MultiplayerSpawner
 
 const MATCH_3_BOARD = preload("res://Scenes/Battle/match_3_board.tscn")
 
+@onready var player_boards: Node = $"../MatchBattle/PlayerBoards"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	multiplayer.allow_object_decoding = true
 	spawn_function = spawn_board
 	if multiplayer.is_server():
-		call_deferred("spawn", 1)
-		# multiplayer.peer_connected.connect(spawn_board)
+		spawn(1) # Spawn Host Board
 		for peer_id: int in multiplayer.get_peers():
-			# spawn(peer_id)
-			var board = spawn(peer_id)
-			await board.ready
-			# board.set_multiplayer_authority(peer_id)
-			#for board_piece: Node in board.get_children():
-				#if board_piece.is_in_group("match3-pieces"):
-					#board_piece.set_multiplayer_authority(peer_id)
+			spawn(peer_id) # Spawn Client Board
 
 
 func spawn_board(peer_id: int) -> Match3Board:
@@ -25,9 +21,10 @@ func spawn_board(peer_id: int) -> Match3Board:
 	board.name = str(peer_id)
 	# board.lock()
 
-	if peer_id == multiplayer.get_unique_id():
-		board.position = Vector2(300, 460)
-	else:
-		board.position = Vector2(300, 60)
-
 	return board
+
+
+@rpc("authority", "call_remote", "reliable")
+func send_client_boards(host_board: Match3Board, client_board: Match3Board) -> void:
+	print(host_board)
+	print(client_board)

@@ -1,4 +1,13 @@
-class_name Match3DemoAnimator extends Match3Animator
+extends Match3Animator
+
+
+func _ready() -> void:
+	if is_multiplayer_authority():
+		board = get_tree().get_first_node_in_group("board_" + str(multiplayer.get_unique_id()))
+		print("Found board: %s" % "board_" + str(multiplayer.get_unique_id()))
+
+		animation_started.connect(on_animation_started)
+		animation_finished.connect(on_animation_finished)
 
 
 func swap_pieces(
@@ -90,20 +99,20 @@ func fall_pieces(movements: Array[Match3FallMover.FallMovement]) -> void:
 
 
 func spawn_piece(cell: Match3GridCell) -> void:
-	if cell.has_piece():
-		var tween: Tween = create_tween()
-		var fall_distance = board.configuration.cell_size.y * board.configuration.grid_height
+	if cell.has_piece() and board:
+			var tween: Tween = create_tween()
+			var fall_distance = board.configuration.cell_size.y * board.configuration.grid_height
 
-		cell.piece.hide()
-		tween.tween_property(cell.piece, "visible", true, 0.1)
-		tween.tween_property(cell.piece, "position", cell.position, 0.25)\
-			.set_trans(Tween.TRANS_QUAD).from(Vector2(cell.position.x, cell.position.y - fall_distance))
+			cell.piece.hide()
+			tween.tween_property(cell.piece, "visible", true, 0.1)
+			tween.tween_property(cell.piece, "position", cell.position, 0.25)\
+				.set_trans(Tween.TRANS_QUAD).from(Vector2(cell.position.x, cell.position.y - fall_distance))
 
-		await tween.finished
+			await tween.finished
 
 
 func spawn_pieces(cells: Array[Match3GridCell]) -> void:
-	if cells.size() > 0:
+	if cells.size() > 0 and board:
 		var tween: Tween = create_tween().set_parallel(true)
 
 		for cell: Match3GridCell in cells.filter(func(cell: Match3GridCell): return cell.has_piece()):
@@ -115,23 +124,6 @@ func spawn_pieces(cells: Array[Match3GridCell]) -> void:
 				.set_trans(Tween.TRANS_QUAD).from(Vector2(cell.position.x, cell.position.y - fall_distance))
 
 		await tween.finished
-
-
-func trigger_special_piece(piece: Match3Piece) -> void:
-	if is_instance_valid(piece):
-		match piece.id:
-			&"special-blue-triangle":
-				var tween: Tween = create_tween()
-				tween.tween_property(piece, "scale", Vector2(piece.scale.x * 1.2, piece.scale.y * 1.5), 1.0)\
-					.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-
-				await tween.finished
-			&"special-blue-triangle-5":
-				var tween: Tween = create_tween()
-				tween.tween_property(piece, "rotation", TAU, 0.5).set_ease(Tween.EASE_IN)
-				tween.set_loops(2)
-
-				await tween.loop_finished
 
 
 func piece_drag_ended(piece: Match3Piece) -> void:

@@ -9,41 +9,17 @@ var total_damage: float = 0.0
 var turns: int = 0
 var chirp_pitch_scale: float = 1.0
 
-@onready var multiplayer_spawner: MultiplayerSpawner = $MultiplayerSpawner
-@onready var board_pieces: Node2D = $BoardPieces
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	multiplayer_spawner.spawn_function = add_piece
-	# multiplayer_spawner.spawn_path = get_path()
 	super()
+	add_to_group("board_" + str(multiplayer.get_unique_id()))
 	if is_multiplayer_authority():
-		consumed_sequence.connect(_on_consumed_sequence)
-		unlocked.connect(_on_board_unlocked)
-
-
-func add_piece(piece: Match3Piece) -> Match3Piece:
-	piece.name = "%s_%s_%s" % [piece.id, multiplayer.get_unique_id(), randi_range(0, 10000)]
-	piece.set_multiplayer_authority(multiplayer.get_unique_id())
-	return piece
-
-
-func draw_piece_on_cell(cell: Match3GridCell, piece: Match3Piece, replace: bool = false) -> void:
-	if cell.can_contain_piece and (cell.is_empty() or replace):
-		piece.cell = cell
-		piece.position = cell.position
-
-		#if replace and cell.has_piece():
-			#cell.remove_piece()
-
-		cell.piece = piece
-
-		if not piece.is_inside_tree():
-			if is_multiplayer_authority():
-				multiplayer_spawner.spawn(piece)
-			# board_pieces.add_child(piece, true)
-			#add_child(piece, true)
-			drawed_piece.emit(piece)
+		# consumed_sequence.connect(_on_consumed_sequence)
+		# unlocked.connect(_on_board_unlocked)
+		position = Vector2(300, 460) # Place on bottom
+	else:
+		position = Vector2(300, 60) # Place on top
 
 
 func _on_consumed_sequence(sequence: Match3Sequence) -> void:
@@ -59,7 +35,6 @@ func _on_consumed_sequence(sequence: Match3Sequence) -> void:
 
 func _on_board_unlocked() -> void:
 	chirp_pitch_scale = 1.0
-
 	if damage > 0:
 		turns += 1
 		total_damage += damage
