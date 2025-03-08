@@ -17,15 +17,13 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	_prepare_sprite()
-	if is_inside_tree():
-		await get_tree().process_frame
+	await get_tree().process_frame
 
 	_create_mouse_region_button()
-	if is_inside_tree():
-		await get_tree().process_frame
+	await get_tree().process_frame
 
 	_prepare_area_detectors()
-	set_process(drag_enabled and not is_locked)
+	# set_process(drag_enabled and not is_locked)
 
 
 func _prepare_sprite() -> void:

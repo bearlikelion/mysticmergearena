@@ -2,8 +2,6 @@ extends Match3Highlighter
 
 @export var highlight_texture: Texture2D
 
-# const highlight_texture = preload("res://addons/ninetailsrabbit.match3_board/demo/assets/highlighted.png")
-
 
 func highlight_cells(cells: Array[Match3GridCell]) -> void:
 	current_highlighted_cells = cells
