@@ -10,5 +10,5 @@ script = ExtResource("1_6l7je")
 
 [node name="MainMenu" parent="Level" instance=ExtResource("1_52fb6")]
 
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." groups=["mp_spawner"]]
 spawn_path = NodePath("../Level")

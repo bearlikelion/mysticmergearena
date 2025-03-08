@@ -218,8 +218,15 @@ func cell_with_pieces_of_color(color: Match3PieceConfiguration.PieceType) -> Arr
 
 
 func pieces() -> Array[Match3Piece]:
+	var all_pieces: Array[Node] = board.get_tree().get_nodes_in_group(Match3Piece.GroupName)
 	var pieces: Array[Match3Piece] = []
-	pieces.assign(board.get_tree().get_nodes_in_group(Match3Piece.GroupName))
+	# pieces.assign(board.get_tree().get_nodes_in_group(Match3Piece.GroupName))
+
+	for piece: Match3Piece in all_pieces:
+		if piece.is_multiplayer_authority():
+			pieces.append(piece)
+
+	# print("Pieces Size: %s" % pieces.size())
 
 	return pieces
 
@@ -257,7 +264,13 @@ func pieces_of_type(type: Match3PieceConfiguration.PieceType) -> Array[Match3Pie
 
 	match type:
 		Match3PieceConfiguration.PieceType.Normal:
-			result.assign(board.get_tree().get_nodes_in_group(Match3Piece.GroupName))
+			# result.assign(board.get_tree().get_nodes_in_group(Match3Piece.GroupName))
+			var all_pieces: Array[Node] = board.get_tree().get_nodes_in_group(Match3Piece.GroupName)
+			var pieces: Array[Match3Piece] = []
+
+			for piece: Match3Piece in all_pieces:
+				if piece.is_multiplayer_authority():
+					result.append(piece)
 		Match3PieceConfiguration.PieceType.Special:
 			result.assign(board.get_tree().get_nodes_in_group(Match3Piece.SpecialGroupName))
 		Match3PieceConfiguration.PieceType.Obstacle:

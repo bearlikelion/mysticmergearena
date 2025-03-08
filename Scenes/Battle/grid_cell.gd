@@ -7,13 +7,11 @@ func _ready() -> void:
 
 func remove_piece(queued: bool = true) -> void:
 	print("[%s] Remove Piece %s" % [multiplayer.get_unique_id(), piece.name])
-	queued = true
-	if has_piece():
-		if queued:
-			if piece.is_multiplayer_authority():
-				piece.queue_free()
-		else:
-			if piece.is_multiplayer_authority():
-				piece.free()
+	NetCode.remove_piece.rpc(queued, piece.name)
+	#if has_piece():
+		#if queued:
+			#piece.queue_free()
+		#else:
+			#piece.free()
 
 	piece = null

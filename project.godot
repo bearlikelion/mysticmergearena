@@ -37,6 +37,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/ninetailsrabbit.match3_board/plugin.cfg")
 
+[global_group]
+
+mp_spawner=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
