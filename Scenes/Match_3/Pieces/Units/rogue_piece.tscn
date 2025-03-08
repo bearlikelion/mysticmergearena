@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://l7a5yfdd338r"]
 
-[ext_resource type="Script" uid="uid://b2edwb8sl1p58" path="res://addons/ninetailsrabbit.match3_board/src/pieces/piece.gd" id="1_5ftcx"]
+[ext_resource type="Script" uid="uid://d3m2xs160u6xl" path="res://addons/ninetailsrabbit.match3_board/src/pieces/piece.gd" id="1_5ftcx"]
 [ext_resource type="Texture2D" uid="uid://b7g0n7r2a5b5m" path="res://Assets/Sprites/32rogues/rogues.png" id="2_2063e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8b2vl"]
