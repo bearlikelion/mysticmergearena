@@ -5,13 +5,15 @@ func _ready() -> void:
 	super()
 
 
-func remove_piece(queued: bool = false) -> void:
+func remove_piece(queued: bool = true) -> void:
+	print("[%s] Remove Piece %s" % [multiplayer.get_unique_id(), piece.name])
+	queued = true
 	if has_piece():
-		# print("[%s] Battle/grid_cell: Remove Piece %s" % [multiplayer.get_unique_id(), piece.name])
-		NetCode.remove_piece.rpc(queued, piece)
-		# if queued:
-			# piece.queue_free()
-		# else:
-			# piece.free()
+		if queued:
+			if piece.is_multiplayer_authority():
+				piece.queue_free()
+		else:
+			if piece.is_multiplayer_authority():
+				piece.free()
 
 	piece = null

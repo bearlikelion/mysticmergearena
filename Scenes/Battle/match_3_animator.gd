@@ -1,15 +1,6 @@
 extends Match3Animator
 
 
-func _ready() -> void:
-	if is_multiplayer_authority():
-		board = get_tree().get_first_node_in_group("board_" + str(multiplayer.get_unique_id()))
-		print("Found board: %s" % "board_" + str(multiplayer.get_unique_id()))
-
-		animation_started.connect(on_animation_started)
-		animation_finished.connect(on_animation_finished)
-
-
 func swap_pieces(
 	from_piece: Match3Piece,
 	to_piece: Match3Piece,

@@ -10,6 +10,7 @@ func _enter_tree() -> void:
 		add_to_group(ObstacleGroupName)
 
 	name = "%s_%s_%s" % [id, get_parent().name, shape]
+	add_to_group(name)
 	z_index = 10
 	original_z_index = z_index
 
