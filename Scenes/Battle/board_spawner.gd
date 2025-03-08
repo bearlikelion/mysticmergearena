@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func spawn_board(peer_id: int) -> Match3Board:
 	var board: Match3Board = MATCH_3_BOARD.instantiate()
-	# board.set_multiplayer_authority(peer_id)
+	board.set_multiplayer_authority(peer_id)
 	board.name = str(peer_id)
 	# board.lock()
 

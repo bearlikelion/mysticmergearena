@@ -39,10 +39,10 @@ func draw_piece_on_cell(cell: Match3GridCell, piece: Match3Piece, replace: bool 
 		cell.piece = piece
 
 		if not piece.is_inside_tree():
-			# if is_multiplayer_authority():
-				# multiplayer_spawner.spawn(piece)
+			if is_multiplayer_authority():
+				multiplayer_spawner.spawn(piece)
 			# board_pieces.add_child(piece, true)
-			add_child(piece, true)
+			#add_child(piece, true)
 			drawed_piece.emit(piece)
 
 

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://80faora1ftok" path="res://Scenes/Battle/match_3_board.gd" id="1_xiyfx"]
 [ext_resource type="Resource" uid="uid://duwx1a4klnd3i" path="res://Scenes/Battle/match_battle_configuration.tres" id="2_nqox3"]
-[ext_resource type="Script" uid="uid://di3hqohlwfx7k" path="res://addons/ninetailsrabbit.match3_board/demo/demo_animator.gd" id="3_ywhar"]
+[ext_resource type="Script" uid="uid://l6w2l27wa40f" path="res://addons/ninetailsrabbit.match3_board/demo/demo_animator.gd" id="3_ywhar"]
 [ext_resource type="Script" uid="uid://virafpsb1iqo" path="res://Scenes/Match_3/match_3_highlighter.gd" id="4_kulvb"]
 [ext_resource type="Texture2D" uid="uid://bdbjg75pn75i5" path="res://Assets/Sprites/32rogues/tiles.png" id="5_wifhw"]
-[ext_resource type="Script" uid="uid://crbsk7myf4of" path="res://addons/ninetailsrabbit.match3_board/src/tools/match3_preview.gd" id="7_avcgt"]
+[ext_resource type="Script" uid="uid://bqyrw4fyu1qxl" path="res://addons/ninetailsrabbit.match3_board/src/tools/match3_preview.gd" id="7_avcgt"]
 [ext_resource type="AudioStream" uid="uid://bf08i44brgm82" path="res://Assets/Audio/SFX/clear.ogg" id="7_dbja4"]
 [ext_resource type="Texture2D" uid="uid://b7g0n7r2a5b5m" path="res://Assets/Sprites/32rogues/rogues.png" id="8_c1f63"]
 
