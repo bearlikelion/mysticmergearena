@@ -639,7 +639,6 @@ func on_line_connector_canceled_match(_pieces: Array[Match3Piece]) -> void:
 
 
 func on_selected_piece(piece: Match3Piece) -> void:
-	print("On Selected Piece")
 	if current_selected_piece == null and piece.is_special() and piece.can_be_triggered:
 		add_special_piece_to_queue(piece)
 		travel_to(BoardState.SpecialConsume)
@@ -665,7 +664,6 @@ func on_selected_piece(piece: Match3Piece) -> void:
 
 
 func on_piece_drag_started(piece: Match3Piece) -> void:
-	print("On Drag Started")
 	if current_selected_piece == null and piece.is_special() and piece.can_be_triggered:
 		add_special_piece_to_queue(piece)
 		travel_to(BoardState.SpecialConsume)
@@ -686,7 +684,6 @@ func on_piece_drag_started(piece: Match3Piece) -> void:
 
 
 func on_piece_drag_ended(piece: Match3Piece) -> void:
-	print("On Drag Ended")
 	if configuration.swap_mode_is_connect_line():
 		if configuration.is_selection_drag_mode() or configuration.is_selection_slide_mode():
 			piece_drag_ended.emit(piece)
