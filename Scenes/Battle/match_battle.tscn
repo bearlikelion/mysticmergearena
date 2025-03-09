@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://di6k3aqb1cefc"]
+[gd_scene load_steps=14 format=4 uid="uid://di6k3aqb1cefc"]
 
 [ext_resource type="AudioStream" uid="uid://dfwgyh7nbh8uj" path="res://Assets/Audio/Music/240376__edtijo__happy-8bit-pixel-adenture.ogg" id="1_rtmgv"]
 [ext_resource type="Texture2D" uid="uid://vdb6v4kv32o0" path="res://Assets/Images/castle-background.png" id="2_on2ik"]
-[ext_resource type="Script" uid="uid://dfayokxu2v38n" path="res://Scenes/Battle/player_boards.gd" id="4_3m86w"]
 [ext_resource type="Texture2D" uid="uid://p61h3sb5qcqn" path="res://Assets/Sprites/Castle/tileset_complet.png" id="5_0jysf"]
 [ext_resource type="Script" uid="uid://hs15nyorrkri" path="res://Scenes/Battle/board_spawner.gd" id="11_e4h0n"]
 [ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="15_v5we4"]
@@ -101,7 +100,6 @@ tile_map_data = PackedByteArray("AAAAABYAAAAAAAIAAAAAAAAAAAAAAAAAAAAnAAAAAAACAAA
 tile_set = SubResource("TileSet_ukc80")
 
 [node name="PlayerBoards" type="Node" parent="MatchBattle"]
-script = ExtResource("4_3m86w")
 
 [node name="FCT" type="Label" parent="."]
 layout_mode = 1

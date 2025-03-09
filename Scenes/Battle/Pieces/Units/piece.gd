@@ -17,24 +17,16 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	_prepare_sprite()
-	await get_tree().process_frame
+	if is_inside_tree():
+		await get_tree().process_frame
 
-	_create_mouse_region_button()
-	await get_tree().process_frame
+	if not is_multiplayer_authority() and is_inside_tree():
+		lock()
+	elif is_multiplayer_authority() and is_inside_tree():
+		_create_mouse_region_button()
 
-	_prepare_area_detectors()
-	# set_process(drag_enabled and not is_locked)
+		if is_inside_tree():
+			await get_tree().process_frame
 
-
-func _prepare_sprite() -> void:
-	sprite = Match3BoardPluginUtilities.first_node_of_type(self, Sprite2D.new())
-
-	if sprite == null:
-		sprite = Match3BoardPluginUtilities.first_node_of_type(self, AnimatedSprite2D.new())
-
-	assert(sprite != null, "Match3Piece: %s needs to have a Sprite2D or AnimatedSprite2D as child to create the mouse region" % name)
-
-	if sprite is Sprite2D:
-		sprite.scale = calculate_texture_scale(sprite.texture, cell.size if cell else Vector2i(48, 48))
-	elif sprite is AnimatedSprite2D:
-		sprite.scale = calculate_texture_scale(sprite.get_sprite_frames().get_frame(sprite.animation, sprite.get_frame()))
+		_prepare_area_detectors()
+		set_process(drag_enabled and not is_locked)

@@ -10,13 +10,18 @@ var turns: int = 0
 var chirp_pitch_scale: float = 1.0
 
 @onready var cell_spawner: MultiplayerSpawner = $CellSpawner
+@onready var piece_spawner: MultiplayerSpawner = $PieceSpawner
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cell_spawner.spawn_function = spawn_grid
-	super()
-	consumed_sequence.connect(_on_consumed_sequence)
+	piece_spawner.spawn_function = spawn_piece
+	if is_multiplayer_authority():
+		super()
+		consumed_sequence.connect(_on_consumed_sequence)
+		await draw_cells()
+		await draw_pieces()
 
 
 func spawn_grid(grid_array: Array) -> Match3GridCell:
@@ -26,7 +31,7 @@ func spawn_grid(grid_array: Array) -> Match3GridCell:
 		return
 
 	var cell: Match3GridCell =  configuration.grid_cell_scene.instantiate()
-	# cell.set_multiplayer_authority(get_multiplayer_authority())
+	cell.set_multiplayer_authority(get_multiplayer_authority())
 	cell.size = configuration.cell_size
 	cell.column = column
 	cell.row = row
@@ -39,8 +44,6 @@ func spawn_grid(grid_array: Array) -> Match3GridCell:
 
 	if cell.board_position() in configuration.empty_cells:
 		clear_cell(cell, true)
-
-	# add_child(cell)
 
 	drawed_cell.emit(cell)
 	return cell
@@ -70,6 +73,26 @@ func draw_cells() -> Match3Board:
 	return self
 
 
+func spawn_piece(piece_array: Array) -> Match3Piece:
+	var cell = get_node(piece_array[0])
+	var piece_configuration: Match3PieceConfiguration = load(piece_array[1])
+	var piece: Match3Piece = Match3Piece.from_configuration(piece_configuration)
+	piece.set_multiplayer_authority(get_multiplayer_authority())
+	piece.cell = cell
+	piece.position = cell.position
+	cell.piece = piece
+
+	return piece
+
+
+func draw_random_piece_on_cell(cell: Match3GridCell, replace: bool = false) -> Match3Piece:
+	var piece_configuration: Match3PieceConfiguration = piece_generator.roll()
+	# draw_piece_on_cell(cell, piece, replace)
+	var spawned_piece = piece_spawner.spawn([cell.get_path(), piece_configuration.resource_path])
+	drawed_piece.emit(spawned_piece)
+	return spawned_piece
+
+
 func _on_consumed_sequence(sequence: Match3Sequence) -> void:
 	var _pieces = sequence.normal_pieces()
 	if _pieces.size() > 0:
@@ -79,28 +102,6 @@ func _on_consumed_sequence(sequence: Match3Sequence) -> void:
 	# await get_tree().create_timer(0.15).timeout
 	AudioManager.play("res://Assets/Audio/SFX/clear.ogg", chirp_pitch_scale)
 	chirp_pitch_scale += 0.25
-
-
-func on_drawed_pieces(_pieces: Array[Match3Piece]) -> void:
-	if configuration.allow_matches_on_start:
-		travel_to(BoardState.Consume)
-	else:
-		remove_matches_from_board()
-
-
-func draw_piece_on_cell(cell: Match3GridCell, piece: Match3Piece, replace: bool = false) -> void:
-	if cell.can_contain_piece and (cell.is_empty() or replace):
-		piece.cell = cell
-		piece.position = cell.position
-
-		if replace and cell.has_piece():
-			cell.remove_piece()
-
-		cell.piece = piece
-
-		if not piece.is_inside_tree():
-			add_child(piece)
-			drawed_piece.emit(piece)
 
 
 func on_board_state_changed(from: BoardState, to: BoardState) -> void:
@@ -172,6 +173,40 @@ func draw_pieces() -> Match3Board:
 			animator.run(Match3Animator.DrawPiecesAnimation, [pieces()])
 
 	unlock_all_pieces()
-	# drawed_pieces.emit(pieces())
-
+	drawed_pieces.emit(pieces())
 	return self
+
+
+func on_drawed_pieces(_pieces: Array[Match3Piece]) -> void:
+	if configuration.allow_matches_on_start:
+		travel_to(BoardState.Consume)
+	else:
+		remove_matches_from_board()
+
+
+func remove_matches_from_board() -> void:
+	if not is_multiplayer_authority():
+		return
+
+	var sequences: Array[Match3Sequence] = sequence_detector.find_board_sequences()
+
+	while sequences.size() > 0:
+		for sequence: Match3Sequence in sequences:
+			var cells_to_change = sequence.cells.slice(0, (sequence.cells.size() / configuration.min_match) + 1)
+			var piece_exceptions: Array[Match3PieceConfiguration] = []
+
+			piece_exceptions.assign(Match3BoardPluginUtilities.remove_duplicates(
+				cells_to_change.map(
+					func(cell: Match3GridCell):
+						return configuration.available_pieces.filter(
+							func(piece_conf: Match3PieceConfiguration): return cell.piece.id == piece_conf.id).front()
+							)
+					)
+				)
+
+			for current_cell: Match3GridCell in cells_to_change:
+				current_cell.remove_piece()
+				var new_piece_configuration: Match3PieceConfiguration = piece_generator.roll(piece_exceptions)
+				piece_spawner.spawn([current_cell.get_path(), new_piece_configuration.resource_path])
+
+		sequences = sequence_detector.find_board_sequences()

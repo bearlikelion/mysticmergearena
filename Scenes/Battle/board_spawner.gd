@@ -21,8 +21,7 @@ func spawn_board(peer_id: int) -> Match3Board:
 	print("[%s] Spawn Board for %s" % [multiplayer.get_unique_id(), peer_id])
 	var board: Match3Board = MATCH_3_BOARD.instantiate()
 	board.add_to_group("board_" + str(multiplayer.get_unique_id()))
-	# board.set_multiplayer_authority(peer_id)
-	board.set_multiplayer_authority(1)
+	board.set_multiplayer_authority(peer_id)
 	board.name = str(peer_id)
 	# board.lock()
 

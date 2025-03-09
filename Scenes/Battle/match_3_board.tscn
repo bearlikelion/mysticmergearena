@@ -31,3 +31,6 @@ stream = ExtResource("7_dbja4")
 
 [node name="CellSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
+
+[node name="PieceSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")

@@ -1,11 +1,13 @@
 extends Node
 
+const uuid_util = preload('res://addons/uuid/uuid.gd')
+
 signal start_game
 
 var client: NakamaClient
 var socket: NakamaSocket
 var session: NakamaSession
-var device_id: String = OS.get_unique_id() # Get the System's unique device identifier
+var device_id: String = OS.get_unique_id()
 var match_id: String = ""
 var multiplayer_bridge: NakamaMultiplayerBridge
 
@@ -26,8 +28,9 @@ func _init() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_window().title = "AutoBattler Session: %s" % _instance_num
-	multiplayer.allow_object_decoding = true
-	print("Object Decoding: %s" % multiplayer.is_object_decoding_allowed())
+
+	if OS.has_feature("web"):
+		device_id = uuid_util.v4()
 
 	print("Device ID: %s" % device_id)
 	client = Nakama.create_client("m4rkS0cketK3y",
