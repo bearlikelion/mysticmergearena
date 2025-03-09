@@ -15,9 +15,8 @@ var chirp_pitch_scale: float = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cell_spawner.spawn_function = spawn_grid
-	if is_multiplayer_authority():
-		super()
-		consumed_sequence.connect(_on_consumed_sequence)
+	super()
+	consumed_sequence.connect(_on_consumed_sequence)
 
 
 func spawn_grid(grid_array: Array) -> Match3GridCell:

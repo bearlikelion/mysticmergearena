@@ -22,9 +22,7 @@ func start_boards() -> void:
 	var host_board: Match3Board = get_child(0)
 	var client_board: Match3Board = get_child(1)
 
-	# if host_board.is_multiplayer_authority():
 	await host_board.draw_cells()
-	# if client_board.is_multiplayer_authority():
 	await client_board.draw_cells()
 	# await host_board.draw_pieces()
 	# await client_board.draw_pieces()
