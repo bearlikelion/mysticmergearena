@@ -27,7 +27,7 @@ func _ready() -> void:
 func spawn_grid(grid_array: Array) -> Match3GridCell:
 	var column = grid_array[0]
 	var row = grid_array[1]
-	if grid_cells_flattened.any(func(cell: Match3GridCell): cell.in_same_grid_position_as(Vector2i(column, row))):
+	if grid_cells_flattened.any(func(spawned_cell: Match3GridCell): spawned_cell.in_same_grid_position_as(Vector2i(column, row))):
 		return
 
 	var cell: Match3GridCell =  configuration.grid_cell_scene.instantiate()
@@ -85,7 +85,7 @@ func spawn_piece(piece_array: Array) -> Match3Piece:
 	return piece
 
 
-func draw_random_piece_on_cell(cell: Match3GridCell, replace: bool = false) -> Match3Piece:
+func draw_random_piece_on_cell(cell: Match3GridCell, _replace: bool = false) -> Match3Piece:
 	var piece_configuration: Match3PieceConfiguration = piece_generator.roll()
 	# draw_piece_on_cell(cell, piece, replace)
 	var spawned_piece = piece_spawner.spawn([cell.get_path(), piece_configuration.resource_path])
@@ -173,7 +173,7 @@ func draw_pieces() -> Match3Board:
 			animator.run(Match3Animator.DrawPiecesAnimation, [pieces()])
 
 	unlock_all_pieces()
-	drawed_pieces.emit(pieces())
+	# drawed_pieces.emit(pieces())
 	return self
 
 
@@ -192,6 +192,7 @@ func remove_matches_from_board() -> void:
 
 	while sequences.size() > 0:
 		for sequence: Match3Sequence in sequences:
+			@warning_ignore("integer_division")
 			var cells_to_change = sequence.cells.slice(0, (sequence.cells.size() / configuration.min_match) + 1)
 			var piece_exceptions: Array[Match3PieceConfiguration] = []
 

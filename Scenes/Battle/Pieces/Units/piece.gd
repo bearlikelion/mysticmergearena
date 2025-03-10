@@ -20,9 +20,9 @@ func _ready() -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
 
-	if not is_multiplayer_authority() and is_inside_tree():
+	if is_inside_tree() and not is_multiplayer_authority():
 		lock()
-	elif is_multiplayer_authority() and is_inside_tree():
+	elif is_inside_tree() and is_multiplayer_authority():
 		_create_mouse_region_button()
 
 		if is_inside_tree():
