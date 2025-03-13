@@ -4,8 +4,7 @@ extends Label
 
 
 func _ready() -> void:
-	if match_battle:
-		match_battle.dealt_damage.connect(_on_dealt_damage)
+	match_battle.dealt_damage.connect(_on_dealt_damage)
 	hide()
 
 
