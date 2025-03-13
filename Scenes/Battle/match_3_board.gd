@@ -93,12 +93,7 @@ func draw_random_piece_on_cell(cell: Match3GridCell, _replace: bool = false) -> 
 	return spawned_piece
 
 
-func _on_consumed_sequence(sequence: Match3Sequence) -> void:
-	var _pieces = sequence.normal_pieces()
-	if _pieces.size() > 0:
-		print(_pieces[0].id)
-	# multiplier += 0.25
-	damage += _pieces.size()
+func _on_consumed_sequence(_sequence: Match3Sequence) -> void:
 	# await get_tree().create_timer(0.15).timeout
 	AudioManager.play("res://Assets/Audio/SFX/clear.ogg", chirp_pitch_scale)
 	chirp_pitch_scale += 0.25
@@ -212,3 +207,15 @@ func on_board_state_changed(_from: BoardState, to: BoardState) -> void:
 				travel_to(BoardState.WaitForInput)
 			else:
 				travel_to(BoardState.Consume)
+
+
+func unlock_all_pieces() -> void:
+	for piece: Node in get_children():
+		if piece is Match3Piece:
+			piece.unlock()
+
+
+func lock_all_pieces() -> void:
+	for piece: Node in get_children():
+		if piece is Match3Piece:
+			piece.lock()

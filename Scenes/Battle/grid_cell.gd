@@ -11,7 +11,7 @@ func _enter_tree() -> void:
 
 
 func remove_piece(_queued: bool = true) -> void:
-	print("[%s] Remove Piece %s" % [multiplayer.get_unique_id(), piece.name])
+	# print("[%s] Remove Piece %s" % [multiplayer.get_unique_id(), piece.name])
 	remove_piece_rpc.rpc(piece.get_path())
 
 

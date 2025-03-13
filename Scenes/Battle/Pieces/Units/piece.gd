@@ -20,9 +20,9 @@ func _ready() -> void:
 	if is_inside_tree():
 		await get_tree().process_frame
 
-	if is_inside_tree() and not is_multiplayer_authority():
-		lock()
-	elif is_inside_tree() and is_multiplayer_authority():
+	#if is_inside_tree() and not is_multiplayer_authority():
+		#lock()
+	if is_inside_tree() and is_multiplayer_authority():
 		_create_mouse_region_button()
 
 		if is_inside_tree():
@@ -32,10 +32,11 @@ func _ready() -> void:
 		set_process(drag_enabled and not is_locked)
 
 
-func _process(delta: float) -> void:
-	super(delta)
+func lock() -> void:
+	sprite.modulate = Color.DIM_GRAY
+	is_locked = true
 
-	if is_locked and sprite.modulate != Color.DIM_GRAY:
-		sprite.modulate = Color.DIM_GRAY
-	elif not is_locked and sprite.modulate != Color.WHITE:
-		sprite.modulate = Color.WHITE
+
+func unlock() -> void:
+	sprite.modulate = Color.WHITE
+	is_locked = false
