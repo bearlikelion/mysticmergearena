@@ -7,30 +7,44 @@ signal start_game
 var client: NakamaClient
 var socket: NakamaSocket
 var session: NakamaSession
-var device_id: String = OS.get_unique_id()
+var device_id: String
 var match_id: String = ""
 var multiplayer_bridge: NakamaMultiplayerBridge
 
 var players = {}
+var player_save: PlayerSave = PlayerSave.new()
 
 var _instance_socket: TCPServer = TCPServer.new()
 var _instance_num: int = -1
 
 func _init() -> void:
-	if OS.is_debug_build():
-		for n in range(0,4):
-			if _instance_socket.listen(5000 + n) == OK:
-				_instance_num = n
-				device_id = device_id + "_" + str(_instance_num)
-				break
+	if not OS.has_feature("web"):
+		device_id = OS.get_unique_id() # On Desktop use Device ID
+
+		if OS.is_debug_build():
+			for n in range(0,4):
+				if _instance_socket.listen(5000 + n) == OK:
+					_instance_num = n
+					device_id = device_id + "_" + str(_instance_num)
+					break
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_window().title = "AutoBattler Session: %s" % _instance_num
+	if not OS.has_feature("web"):
+		get_window().title = "AutoBattler Session: %s" % _instance_num
 
 	if OS.has_feature("web"):
-		device_id = uuid_util.v4()
+		if PlayerSave.has_player_data():
+			player_save = PlayerSave.load_player_data()
+			device_id = player_save.uuid
+		else:
+			device_id = uuid_util.v4()
+			player_save.uuid = device_id
+			player_save.save_player_data(player_save)
+	else:
+		player_save.file_name = device_id
+		player_save = PlayerSave.load_player_data()
 
 	print("Device ID: %s" % device_id)
 	client = Nakama.create_client("m4rkS0cketK3y",

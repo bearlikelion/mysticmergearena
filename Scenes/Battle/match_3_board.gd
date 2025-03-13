@@ -176,3 +176,39 @@ func remove_matches_from_board() -> void:
 				piece_spawner.spawn([current_cell.get_path(), new_piece_configuration.resource_path])
 
 		sequences = sequence_detector.find_board_sequences()
+
+
+func on_board_state_changed(_from: BoardState, to: BoardState) -> void:
+	if not is_multiplayer_authority():
+		return
+
+	match to:
+		BoardState.WaitForInput:
+			unlock()
+
+		BoardState.Consume:
+			lock()
+			await consume_sequences(sequence_detector.find_board_sequences())
+		BoardState.SpecialConsume:
+			lock()
+			if pending_special_pieces.is_empty():
+				travel_to(BoardState.Fall)
+			else:
+				consume_special_pieces(pending_special_pieces)
+
+		BoardState.Fall:
+			lock()
+			await fall_pieces()
+			await get_tree().process_frame
+
+			travel_to(BoardState.Fill)
+
+		BoardState.Fill:
+			lock()
+			await fill_pieces()
+			await get_tree().process_frame
+
+			if sequence_detector.find_board_sequences().is_empty():
+				travel_to(BoardState.WaitForInput)
+			else:
+				travel_to(BoardState.Consume)

@@ -30,3 +30,12 @@ func _ready() -> void:
 
 		_prepare_area_detectors()
 		set_process(drag_enabled and not is_locked)
+
+
+func _process(delta: float) -> void:
+	super(delta)
+
+	if is_locked and sprite.modulate != Color.DIM_GRAY:
+		sprite.modulate = Color.DIM_GRAY
+	elif not is_locked and sprite.modulate != Color.WHITE:
+		sprite.modulate = Color.WHITE

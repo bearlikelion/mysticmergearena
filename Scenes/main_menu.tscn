@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://8nkleb6aublu"]
+[gd_scene load_steps=7 format=3 uid="uid://8nkleb6aublu"]
 
 [ext_resource type="Texture2D" uid="uid://vdb6v4kv32o0" path="res://Assets/Images/castle-background.png" id="1_28flt"]
 [ext_resource type="Script" uid="uid://bo52pu56qfbxb" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
 [ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="2_48xlc"]
 [ext_resource type="Theme" uid="uid://dr6igk47jd2b2" path="res://mma_theme.tres" id="3_1ehe0"]
+[ext_resource type="Script" uid="uid://v7yyg4yir747" path="res://Scenes/uuid.gd" id="5_n45e2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
 font = ExtResource("2_48xlc")
@@ -166,6 +167,18 @@ theme_override_font_sizes/font_size = 64
 disabled = true
 toggle_mode = true
 text = "Ready"
+
+[node name="UUID" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "UUID: 0"
+script = ExtResource("5_n45e2")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonsVbox/DragonButton" to="." method="_on_dragon_button_pressed"]
 [connection signal="pressed" from="ButtonsVbox/RefreshGames" to="." method="_on_refresh_games_pressed"]
