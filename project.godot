@@ -14,10 +14,11 @@ config/ninetailsrabbit.match3_board/update_notification_enabled=true
 
 [application]
 
-config/name="GodotAutoBattler"
+config/name="Mystic Merge Arena"
+config/description="Match 3 Multiplayer Autobattler"
 run/main_scene="uid://3ity3c2ba7s5"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://cdy4qpuq0f780"
 
 [autoload]
 
@@ -40,6 +41,14 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ninetailsrabbit.match3_board/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Scenes/": "orange",
+"res://Scripts/": "yellow"
+}
 
 [global_group]
 

@@ -104,41 +104,6 @@ func _on_consumed_sequence(sequence: Match3Sequence) -> void:
 	chirp_pitch_scale += 0.25
 
 
-func on_board_state_changed(from: BoardState, to: BoardState) -> void:
-	print("[%s] FROM: %s TO: %s" % [multiplayer.get_unique_id(), from, to])
-	match to:
-		BoardState.WaitForInput:
-			unlock()
-
-		BoardState.Consume:
-			lock()
-			await consume_sequences(sequence_detector.find_board_sequences())
-
-		BoardState.SpecialConsume:
-			lock()
-			if pending_special_pieces.is_empty():
-				travel_to(BoardState.Fall)
-			else:
-				consume_special_pieces(pending_special_pieces)
-
-		BoardState.Fall:
-			lock()
-			await fall_pieces()
-			await get_tree().process_frame
-
-			travel_to(BoardState.Fill)
-
-		BoardState.Fill:
-			lock()
-			await fill_pieces()
-			await get_tree().process_frame
-
-			if sequence_detector.find_board_sequences().is_empty():
-				travel_to(BoardState.WaitForInput)
-			else:
-				travel_to(BoardState.Consume)
-
-
 func on_board_unlocked() -> void:
 	super()
 

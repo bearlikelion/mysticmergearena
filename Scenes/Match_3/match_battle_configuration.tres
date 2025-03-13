@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Match3BoardConfiguration" load_steps=9 format=3 uid="uid://ca4lcvcmo0yut"]
 
-[ext_resource type="Script" uid="uid://1ormlpos3vje" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="1_1ci6i"]
+[ext_resource type="Script" uid="uid://d4hhq3xk71dh1" path="res://addons/ninetailsrabbit.match3_board/src/configurations/piece_configuration.gd" id="1_1ci6i"]
 [ext_resource type="Resource" uid="uid://deu0c6c6x3oly" path="res://Scenes/Match_3/Pieces/Units/elf_piece_configuration.tres" id="2_lntwv"]
 [ext_resource type="Resource" uid="uid://8g74wqpc6ewy" path="res://Scenes/Match_3/Pieces/Units/knight_piece_configuration.tres" id="3_avrl6"]
 [ext_resource type="Resource" uid="uid://xekp4tb0vrr5" path="res://Scenes/Match_3/Pieces/Units/wizard_piece_configuration.tres" id="5_8vhgc"]
 [ext_resource type="Resource" uid="uid://ckwh0a4wjk2ir" path="res://Scenes/Match_3/Pieces/Units/rogue_piece_configuration.tres" id="6_jhdwo"]
 [ext_resource type="PackedScene" uid="uid://btleiurbbu1d0" path="res://Scenes/Match_3/grid_cell.tscn" id="6_lntwv"]
-[ext_resource type="Script" uid="uid://bsiqlk2y4cu2r" path="res://addons/ninetailsrabbit.match3_board/src/configurations/match3_board_configuration.gd" id="9_t12sd"]
-[ext_resource type="Script" uid="uid://d2yo8v65pyjpm" path="res://addons/ninetailsrabbit.match3_board/src/configurations/sequence_consume_rule.gd" id="10_0oy84"]
+[ext_resource type="Script" uid="uid://3l3gq7rur1l4" path="res://addons/ninetailsrabbit.match3_board/src/configurations/match3_board_configuration.gd" id="9_t12sd"]
+[ext_resource type="Script" uid="uid://cylvacvajy85d" path="res://addons/ninetailsrabbit.match3_board/src/configurations/sequence_consume_rule.gd" id="10_0oy84"]
 
 [resource]
 script = ExtResource("9_t12sd")

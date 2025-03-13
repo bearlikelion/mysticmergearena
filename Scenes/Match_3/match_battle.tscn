@@ -1,18 +1,18 @@
 [gd_scene load_steps=36 format=4 uid="uid://bliyb0fk4l4w5"]
 
-[ext_resource type="Script" uid="uid://dtrhwlflpuk5k" path="res://addons/ninetailsrabbit.match3_board/src/match3_board.gd" id="1_8eqft"]
+[ext_resource type="Script" uid="uid://dks25ocxl5476" path="res://addons/ninetailsrabbit.match3_board/src/match3_board.gd" id="1_8eqft"]
 [ext_resource type="Script" uid="uid://bnft7go3mdmu0" path="res://Scenes/Match_3/match_battle.gd" id="1_u2reb"]
 [ext_resource type="Texture2D" uid="uid://vdb6v4kv32o0" path="res://Assets/Images/castle-background.png" id="2_8jvxr"]
 [ext_resource type="FontFile" uid="uid://i14pxae5je1y" path="res://Assets/Fonts/BLACC___.TTF" id="2_a2idh"]
 [ext_resource type="Script" uid="uid://dwm5va12d4t67" path="res://Scenes/Match_3/fct.gd" id="2_c4561"]
 [ext_resource type="AudioStream" uid="uid://dfwgyh7nbh8uj" path="res://Assets/Audio/Music/240376__edtijo__happy-8bit-pixel-adenture.ogg" id="2_sequc"]
 [ext_resource type="Resource" uid="uid://ca4lcvcmo0yut" path="res://Scenes/Match_3/match_battle_configuration.tres" id="2_u2reb"]
-[ext_resource type="Script" uid="uid://di3hqohlwfx7k" path="res://addons/ninetailsrabbit.match3_board/demo/demo_animator.gd" id="3_2u4ee"]
+[ext_resource type="Script" uid="uid://l6w2l27wa40f" path="res://addons/ninetailsrabbit.match3_board/demo/demo_animator.gd" id="3_2u4ee"]
 [ext_resource type="AudioStream" uid="uid://bf08i44brgm82" path="res://Assets/Audio/SFX/clear.ogg" id="4_8qnpj"]
 [ext_resource type="Script" uid="uid://cynsl7ccyrwvu" path="res://Scenes/Match_3/end_game.gd" id="4_40ji7"]
-[ext_resource type="Script" uid="uid://crbsk7myf4of" path="res://addons/ninetailsrabbit.match3_board/src/tools/match3_preview.gd" id="4_kwvtu"]
+[ext_resource type="Script" uid="uid://bqyrw4fyu1qxl" path="res://addons/ninetailsrabbit.match3_board/src/tools/match3_preview.gd" id="4_kwvtu"]
 [ext_resource type="Script" uid="uid://qbg2bfx7finn" path="res://Scenes/Match_3/turn_counter.gd" id="4_odpnr"]
-[ext_resource type="Script" uid="uid://dnvkedpotyw2n" path="res://addons/ninetailsrabbit.match3_board/src/pieces/line_connector.gd" id="5_2u4ee"]
+[ext_resource type="Script" uid="uid://mnrey6b5yyar" path="res://addons/ninetailsrabbit.match3_board/src/pieces/line_connector.gd" id="5_2u4ee"]
 [ext_resource type="Texture2D" uid="uid://bdbjg75pn75i5" path="res://Assets/Sprites/32rogues/tiles.png" id="6_u2reb"]
 [ext_resource type="Texture2D" uid="uid://b7g0n7r2a5b5m" path="res://Assets/Sprites/32rogues/rogues.png" id="7_kwvtu"]
 [ext_resource type="Texture2D" uid="uid://p61h3sb5qcqn" path="res://Assets/Sprites/Castle/tileset_complet.png" id="9_8qnpj"]
@@ -213,7 +213,6 @@ board = NodePath("..")
 [node name="Match3Highlighter" type="Node" parent="MatchBattle/Match3Board"]
 script = ExtResource("12_ukc80")
 highlight_texture = SubResource("AtlasTexture_ukc80")
-metadata/_custom_type_script = "uid://c32eg6vwdcifp"
 
 [node name="Match3LineConnector" type="Line2D" parent="MatchBattle/Match3Board" node_paths=PackedStringArray("board")]
 width = 1.5
@@ -238,7 +237,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 [node name="Piece(0,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 z_index = 1
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(0,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(0, 72)
@@ -249,7 +248,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(0,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(0, 144)
@@ -260,7 +259,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(0,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(0, 216)
@@ -271,7 +270,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(0, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(72, 0)
@@ -282,7 +281,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(72, 72)
@@ -293,7 +292,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(1,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(72, 144)
@@ -304,7 +303,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(48, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(1,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(72, 216)
@@ -326,7 +325,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(2,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(144, 72)
@@ -337,7 +336,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(2,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(144, 144)
@@ -348,7 +347,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(2,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(144, 216)
@@ -359,7 +358,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(96, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(3,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(216, 0)
@@ -370,7 +369,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(3,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(216, 72)
@@ -392,7 +391,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(3,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(216, 216)
@@ -403,7 +402,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(144, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(4,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(288, 0)
@@ -414,7 +413,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(192, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(4,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(288, 72)
@@ -425,7 +424,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(192, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(4,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(288, 144)
@@ -436,7 +435,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(192, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(4,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(288, 216)
@@ -447,7 +446,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(192, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(5,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(360, 0)
@@ -458,7 +457,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(240, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(5,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(360, 72)
@@ -480,7 +479,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(240, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(5,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(360, 216)
@@ -491,7 +490,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(240, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(6,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(432, 0)
@@ -502,7 +501,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(288, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(6,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(432, 72)
@@ -513,7 +512,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(288, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(6,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(432, 144)
@@ -524,7 +523,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(288, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(6,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(432, 216)
@@ -546,7 +545,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 0)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(7,1)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(504, 72)
@@ -557,7 +556,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(7,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(504, 144)
@@ -568,7 +567,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(7,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(504, 216)
@@ -579,7 +578,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(336, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_qu6yf")
 
 [node name="Cell(8,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(576, 0)
@@ -601,7 +600,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(384, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_sequc")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(8,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(576, 144)
@@ -612,7 +611,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(384, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_8jvxr")
+texture = SubResource("AtlasTexture_sequc")
 
 [node name="Cell(8,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(576, 216)
@@ -623,7 +622,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(384, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_5ojcl")
 
 [node name="Cell(9,0)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(648, 0)
@@ -645,7 +644,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 48)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_5ojcl")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(9,2)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(648, 144)
@@ -656,7 +655,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 96)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Cell(9,3)" type="Sprite2D" parent="MatchBattle/Match3Board/Match3Preview"]
 position = Vector2(648, 216)
@@ -667,7 +666,7 @@ texture = SubResource("AtlasTexture_2u4ee")
 z_index = 1
 position = Vector2(432, 144)
 scale = Vector2(1.35, 1.35)
-texture = SubResource("AtlasTexture_qu6yf")
+texture = SubResource("AtlasTexture_8jvxr")
 
 [node name="Dragon" type="Sprite2D" parent="MatchBattle"]
 position = Vector2(601, 162)
